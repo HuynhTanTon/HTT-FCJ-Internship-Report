@@ -6,34 +6,39 @@ chapter: false
 pre: " <b> 6. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy it verbatim** into your report, including this warning.
-{{% /notice %}}
+During my internship at **First Cloud Journey – AWS FCJ HCM** from **20/04/2026** to **12/07/2026**, I tried my best to learn and practice. Looking back, however, I still see many gaps in my knowledge and skills.
 
-During my internship at **[Company/Organization Name]** from **[start date]** to **[end date]**, I had the opportunity to learn, practice, and apply the knowledge acquired in school to a real-world working environment.  
-I participated in **[briefly describe the main project or task]**, through which I improved my skills in **[list skills: programming, analysis, reporting, communication, etc.]**.  
+I joined the **FCJ Cloud Intern** program and worked through basic-to-advanced AWS services. Because my starting point was weak, I had to **self-study a lot** outside class hours — reading Cloud Journey labs and AWS docs — but I still struggled with debugging and often needed extra time to fully understand each concept.
 
-In terms of work ethic, I always strived to complete tasks well, complied with workplace regulations, and actively engaged with colleagues to improve work efficiency.
+Regarding work attitude, I always tried to finish labs on schedule and asked the mentor when I was stuck. Even though I gave my full effort within my ability, the results were still below my own expectations.
 
-To objectively reflect on my internship period, I would like to evaluate myself based on the following criteria:
+To reflect honestly on the internship, I assess myself using the criteria below:
 
-| No. | Criteria                            | Description                                                                                      | Good | Fair | Average |
-| --- | ----------------------------------- | ------------------------------------------------------------------------------------------------ | ---- | ---- | ------- |
-| 1   | **Professional knowledge & skills** | Understanding of the field, applying knowledge in practice, proficiency with tools, work quality | ✅    | ☐    | ☐       |
-| 2   | **Ability to learn**                | Ability to absorb new knowledge and learn quickly                                                | ☐    | ✅    | ☐       |
-| 3   | **Proactiveness**                   | Taking initiative, seeking out tasks without waiting for instructions                            | ✅    | ☐    | ☐       |
-| 4   | **Sense of responsibility**         | Completing tasks on time and ensuring quality                                                    | ✅    | ☐    | ☐       |
-| 5   | **Discipline**                      | Adhering to schedules, rules, and work processes                                                 | ☐    | ☐    | ✅       |
-| 6   | **Progressive mindset**             | Willingness to receive feedback and improve oneself                                              | ☐    | ✅    | ☐       |
-| 7   | **Communication**                   | Presenting ideas and reporting work clearly                                                      | ☐    | ✅    | ☐       |
-| 8   | **Teamwork**                        | Working effectively with colleagues and participating in teams                                   | ✅    | ☐    | ☐       |
-| 9   | **Professional conduct**            | Respecting colleagues, partners, and the work environment                                        | ✅    | ☐    | ☐       |
-| 10  | **Problem-solving skills**          | Identifying problems, proposing solutions, and showing creativity                                | ☐    | ✅    | ☐       |
-| 11  | **Contribution to project/team**    | Work effectiveness, innovative ideas, recognition from the team                                  | ✅    | ☐    | ☐       |
-| 12  | **Overall**                         | General evaluation of the entire internship period                                               | ✅    | ☐    | ☐       |
+| No. | Criteria | Description | Good | Fair | Average |
+| --- | -------- | ----------- | ---- | ---- | ------- |
+| 1 | **Professional knowledge & skills** | AWS knowledge is still basic; applying labs is slow and not deep enough | ☐ | ☐ | ✅ |
+| 2 | **Ability to learn** | Self-studied a lot, actively found materials when stuck, kept reviewing until concepts clicked | ✅ | ☐ | ☐ |
+| 3 | **Proactiveness** | Did research and asked when needed, but sometimes still relied on guidance | ☐ | ✅ | ☐ |
+| 4 | **Sense of responsibility** | Tried to finish on time; took each lab and report seriously | ✅ | ☐ | ☐ |
+| 5 | **Discipline** | Followed schedule and rules at an acceptable level | ☐ | ✅ | ☐ |
+| 6 | **Progressive mindset** | Willing to receive feedback, learn from each mistake, and keep improving | ✅ | ☐ | ☐ |
+| 7 | **Communication** | Presenting / reporting is still hesitant; not clear or confident enough | ☐ | ☐ | ✅ |
+| 8 | **Teamwork** | Cooperated with mentor / peers, but contribution was still limited | ☐ | ☐ | ✅ |
+| 9 | **Professional conduct** | Respected mentor and the workplace | ☐ | ✅ | ☐ |
+| 10 | **Problem-solving skills** | Can debug simple issues; still struggles with complex problems | ☐ | ☐ | ✅ |
+| 11 | **Contribution to project/team** | Completed labs and report, but overall contribution remains modest | ☐ | ☐ | ✅ |
+| 12 | **Overall** | Tried hard and self-studied a lot, but overall result is still average | ☐ | ☐ | ✅ |
+
+### Strengths
+
+* **Self-learning** habit: spent extra time outside class reading labs and documentation.
+* **Did not give up easily** when facing errors; tried to investigate before asking for help.
+* Serious learning attitude and honest awareness of personal weaknesses.
 
 ### Needs Improvement
 
-* Strengthen discipline and strictly comply with the rules and regulations of the company or any organization  
-* Improve problem-solving thinking  
-* Enhance communication skills in both daily interactions and professional contexts, including handling situations effectively
+* Strengthen **AWS technical knowledge** — currently mostly following labs, not yet designing solid architectures.
+* Improve **communication / presentation** when reporting and asking questions.
+* Build stronger **problem-solving skills** for complex issues and rely less on the mentor.
+* Improve **technical English** to read documentation faster.
+* Be more **proactive and contributive** in team / project work.
