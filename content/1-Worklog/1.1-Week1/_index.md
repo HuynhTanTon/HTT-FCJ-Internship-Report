@@ -10,7 +10,7 @@ pre: " <b> 1.1. </b> "
 
 ### Week 1 Objectives:
 
-* Complete onboarding and meet the mentor at First Cloud Journey.
+* Complete onboarding and meet the admin team at First Cloud Journey.
 * Create / verify an AWS account and activate Cloud Credits.
 * Explore the AWS Management Console, Regions and Availability Zones.
 * Practice Amazon EC2 and configure the AWS CLI.
@@ -19,7 +19,7 @@ pre: " <b> 1.1. </b> "
 
 | Day | Task | Start Date | Completion Date | Reference Material |
 | --- | ---- | ---------- | --------------- | ------------------ |
-| Mon | Arrive at the office, meet mentor Nguyen Gia Hung, complete intern onboarding procedures. | 17/04/2026 | 20/04/2026 | |
+| Mon | Arrive at the office, meet the admin team, complete intern onboarding procedures. | 17/04/2026 | 20/04/2026 | |
 | Tue | Complete cloud account verification steps and activate the $200 Cloud Credits package. | 21/04/2026 | 21/04/2026 | <https://cloudjourney.awsstudygroup.com/> |
 | Wed | Explore AWS Regions / Availability Zones on the Management Console; create an AWS Free Tier account. | 22/04/2026 | 22/04/2026 | <https://000001.awsstudygroup.com/><br><https://000011.awsstudygroup.com/> |
 | Thu | Study foundational theory and practice launching an Amazon EC2 Linux instance. | 23/04/2026 | 23/04/2026 | <https://000004.awsstudygroup.com/> |
@@ -27,7 +27,7 @@ pre: " <b> 1.1. </b> "
 
 ### Week 1 Achievements:
 
-* Completed onboarding and met mentor Nguyen Gia Hung.
+* Completed onboarding and met the admin team.
 * Verified AWS account and activated Cloud Credits.
 * Understood Regions, Availability Zones and basic Console navigation.
 * Launched an EC2 Linux instance and configured AWS CLI (Access Key, Secret Key, Region).

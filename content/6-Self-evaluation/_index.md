@@ -10,7 +10,7 @@ During my internship at **First Cloud Journey – AWS FCJ HCM** from **20/04/202
 
 I joined the **FCJ Cloud Intern** program and worked through basic-to-advanced AWS services. Because my starting point was weak, I had to **self-study a lot** outside class hours — reading Cloud Journey labs and AWS docs — but I still struggled with debugging and often needed extra time to fully understand each concept.
 
-Regarding work attitude, I always tried to finish labs on schedule and asked the mentor when I was stuck. Even though I gave my full effort within my ability, the results were still below my own expectations.
+Regarding work attitude, I always tried to finish labs on schedule and asked the admin team when I was stuck. Even though I gave my full effort within my ability, the results were still below my own expectations.
 
 To reflect honestly on the internship, I assess myself using the criteria below:
 
@@ -23,8 +23,8 @@ To reflect honestly on the internship, I assess myself using the criteria below:
 | 5 | **Discipline** | Followed schedule and rules at an acceptable level | ☐ | ✅ | ☐ |
 | 6 | **Progressive mindset** | Willing to receive feedback, learn from each mistake, and keep improving | ✅ | ☐ | ☐ |
 | 7 | **Communication** | Presenting / reporting is still hesitant; not clear or confident enough | ☐ | ☐ | ✅ |
-| 8 | **Teamwork** | Cooperated with mentor / peers, but contribution was still limited | ☐ | ☐ | ✅ |
-| 9 | **Professional conduct** | Respected mentor and the workplace | ☐ | ✅ | ☐ |
+| 8 | **Teamwork** | Cooperated with the admin team / peers, but contribution was still limited | ☐ | ☐ | ✅ |
+| 9 | **Professional conduct** | Respected the admin team and the workplace | ☐ | ✅ | ☐ |
 | 10 | **Problem-solving skills** | Can debug simple issues; still struggles with complex problems | ☐ | ☐ | ✅ |
 | 11 | **Contribution to project/team** | Completed labs and report, but overall contribution remains modest | ☐ | ☐ | ✅ |
 | 12 | **Overall** | Tried hard and self-studied a lot, but overall result is still average | ☐ | ☐ | ✅ |
@@ -39,6 +39,6 @@ To reflect honestly on the internship, I assess myself using the criteria below:
 
 * Strengthen **AWS technical knowledge** — currently mostly following labs, not yet designing solid architectures.
 * Improve **communication / presentation** when reporting and asking questions.
-* Build stronger **problem-solving skills** for complex issues and rely less on the mentor.
+* Build stronger **problem-solving skills** for complex issues and rely less on the admin team.
 * Improve **technical English** to read documentation faster.
 * Be more **proactive and contributive** in team / project work.

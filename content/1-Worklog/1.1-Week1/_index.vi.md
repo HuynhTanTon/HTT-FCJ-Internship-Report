@@ -10,7 +10,7 @@ pre: " <b> 1.1. </b> "
 
 ### Mục tiêu tuần 1:
 
-* Hoàn tất thủ tục Onboarding và làm quen với mentor tại First Cloud Journey.
+* Hoàn tất thủ tục Onboarding và làm quen với các anh chị admin tại First Cloud Journey.
 * Tạo / xác minh tài khoản AWS và kích hoạt Cloud Credits.
 * Làm quen AWS Management Console, Regions / Availability Zones.
 * Thực hành Amazon EC2 và cấu hình AWS CLI.
@@ -19,7 +19,7 @@ pre: " <b> 1.1. </b> "
 
 | Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
 | --- | --------- | ------------ | --------------- | -------------- |
-| 2 | Đến văn phòng công ty nhận vị trí, làm quen với hướng dẫn viên Nguyễn Gia Hưng, hoàn tất thủ tục Onboarding nhân viên thực tập. | 17/04/2026 | 20/04/2026 | |
+| 2 | Đến văn phòng công ty nhận vị trí, làm quen với các anh chị admin, hoàn tất thủ tục Onboarding nhân viên thực tập. | 17/04/2026 | 20/04/2026 | |
 | 3 | Thực hiện chuỗi tác vụ xác minh tài khoản đám mây, kích hoạt gói 200 USD Cloud Credits hỗ trợ tài khoản. | 21/04/2026 | 21/04/2026 | <https://cloudjourney.awsstudygroup.com/> |
 | 4 | Khám phá kiến trúc phân vùng vật lý (Region / AZ) trên AWS Management Console; tạo tài khoản AWS Free Tier. | 22/04/2026 | 22/04/2026 | <https://000001.awsstudygroup.com/><br><https://000011.awsstudygroup.com/> |
 | 5 | Đọc tài liệu lý thuyết nền tảng, thực hành khởi tạo máy chủ ảo Amazon EC2 Linux. | 23/04/2026 | 23/04/2026 | <https://000004.awsstudygroup.com/> |
@@ -27,7 +27,7 @@ pre: " <b> 1.1. </b> "
 
 ### Kết quả đạt được tuần 1:
 
-* Hoàn tất Onboarding và làm quen với mentor Nguyễn Gia Hưng.
+* Hoàn tất Onboarding và làm quen với các anh chị admin.
 * Tạo / xác minh tài khoản AWS và kích hoạt Cloud Credits thành công.
 * Hiểu Regions, Availability Zones và thao tác cơ bản trên AWS Console.
 * Khởi chạy EC2 Linux và cấu hình AWS CLI (Access Key, Secret Key, Region).
