@@ -7,7 +7,7 @@ chapter: false
 
 # Báo cáo thực tập
 ### Thông tin sinh viên:
-&emsp; **Họ và tên:** Huỳnh Tấn Tôn
+&emsp; **Họ và tên:** Huỳnh Tấn Tồn
 
 &emsp; **Số điện thoại:** 0354456232
 

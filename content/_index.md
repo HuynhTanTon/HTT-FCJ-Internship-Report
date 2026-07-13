@@ -9,7 +9,7 @@ chapter: false
 # Internship Report
 
 ### Student Information:
-&emsp; **Full Name:** Huynh Tan Ton
+&emsp; **Full Name:** Huynh Tan Ton (Huỳnh Tấn Tồn)
 
 &emsp; **Phone Number:** 0354456232
 

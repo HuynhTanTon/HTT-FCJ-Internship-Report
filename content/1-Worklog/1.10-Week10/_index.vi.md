@@ -1,59 +1,38 @@
 ---
 title: "Worklog Tuần 10"
 date: 2024-01-01
-weight: 2
+weight: 10
 chapter: false
 pre: " <b> 1.10. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
+**Thời gian:** 22/06/2026 – 28/06/2026
 
 ### Mục tiêu tuần 10:
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Xây dựng data lake trên AWS: S3 + Glue + Athena + QuickSight.
+* Truy vấn dữ liệu lớn trên S3 mà không cần database server truyền thống.
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
 
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+| --- | --------- | ------------ | --------------- | -------------- |
+| 2 | Tìm hiểu kiến trúc data lake: S3 (storage), Glue (ETL), Athena (query), QuickSight (BI). | 22/06/2026 | 22/06/2026 | <https://000070.awsstudygroup.com/><br><https://000035.awsstudygroup.com/> |
+| 3 | Lab 1: Upload dataset CSV (~100.000 dòng) lên S3; tạo bảng Athena và chạy SQL trực tiếp trên S3. | 23/06/2026 | 24/06/2026 | <https://000106.awsstudygroup.com/><br><https://000040.awsstudygroup.com/> |
+| 4 | Thực hành AWS Glue Crawler / ETL; xử lý lỗi DynamicFrame (convert `toDF()` sang Spark DataFrame). | 25/06/2026 | 25/06/2026 | <https://000040.awsstudygroup.com/><br><https://000105.awsstudygroup.com/> |
+| 5 | Tối ưu chi phí Athena: định dạng Parquet, partition theo ngày; trực quan hóa với QuickSight. | 26/06/2026 | 26/06/2026 | <https://000073.awsstudygroup.com/><br><https://000106.awsstudygroup.com/> |
+| 6 | Tổng hợp pipeline S3 → Glue → Athena → QuickSight; ghi chú best practices chi phí. | 27/06/2026 | 27/06/2026 | <https://000070.awsstudygroup.com/><br><https://cloudjourney.awsstudygroup.com/> |
 
 ### Kết quả đạt được tuần 10:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Chạy SQL trên dữ liệu lớn trong S3 bằng Athena không cần DB server.
+* Hiểu ETL với Glue và tối ưu Athena bằng Parquet + partition.
+* Biết dùng QuickSight để visualization.
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+### Khó khăn và cách giải quyết:
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
+* Glue Job fail do dùng sai API DynamicFrame → theo Glue Developer Guide, convert bằng `toDF()` sang Spark DataFrame.
 
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
+### Kế hoạch tuần tiếp theo:
 
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+* Khám phá AI/ML Services: SageMaker, Rekognition và Amazon Bedrock.

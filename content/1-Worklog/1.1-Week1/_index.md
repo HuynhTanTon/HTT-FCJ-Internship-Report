@@ -5,53 +5,37 @@ weight: 1
 chapter: false
 pre: " <b> 1.1. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
 
+**Period:** 17/04/2026 – 24/04/2026
 
 ### Week 1 Objectives:
 
-* Connect and get acquainted with members of First Cloud Journey.
-* Understand basic AWS services, how to use the console & CLI.
+* Complete onboarding and meet the mentor at First Cloud Journey.
+* Create / verify an AWS account and activate Cloud Credits.
+* Explore the AWS Management Console, Regions and Availability Zones.
+* Practice Amazon EC2 and configure the AWS CLI.
 
 ### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
 
+| Day | Task | Start Date | Completion Date | Reference Material |
+| --- | ---- | ---------- | --------------- | ------------------ |
+| Mon | Arrive at the office, meet mentor Nguyen Gia Hung, complete intern onboarding procedures. | 17/04/2026 | 20/04/2026 | |
+| Tue | Complete cloud account verification steps and activate the $200 Cloud Credits package. | 21/04/2026 | 21/04/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| Wed | Explore AWS Regions / Availability Zones on the Management Console; create an AWS Free Tier account. | 22/04/2026 | 22/04/2026 | <https://000001.awsstudygroup.com/><br><https://000011.awsstudygroup.com/> |
+| Thu | Study foundational theory and practice launching an Amazon EC2 Linux instance. | 23/04/2026 | 23/04/2026 | <https://000004.awsstudygroup.com/> |
+| Fri | Install AWS CLI locally, configure Access Key, and verify API connectivity. | 24/04/2026 | 24/04/2026 | <https://000011.awsstudygroup.com/> |
 
 ### Week 1 Achievements:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Completed onboarding and met mentor Nguyen Gia Hung.
+* Verified AWS account and activated Cloud Credits.
+* Understood Regions, Availability Zones and basic Console navigation.
+* Launched an EC2 Linux instance and configured AWS CLI (Access Key, Secret Key, Region).
 
-* Successfully created and configured an AWS Free Tier account.
+### Challenges & Solutions:
 
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
+* Initially overwhelmed by the number of Console services → followed the [Cloud Journey](https://cloudjourney.awsstudygroup.com/) roadmap and used the search bar to find services quickly.
 
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
+### Next Week Plan:
 
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+* Learn AWS IAM — users, permissions and account security.

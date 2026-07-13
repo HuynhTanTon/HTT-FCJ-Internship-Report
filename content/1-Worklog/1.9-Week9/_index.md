@@ -1,57 +1,38 @@
 ---
 title: "Week 9 Worklog"
 date: 2024-01-01
-weight: 1
+weight: 9
 chapter: false
 pre: " <b> 1.9. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
 
+**Period:** 15/06/2026 – 21/06/2026
 
 ### Week 9 Objectives:
 
-* Connect and get acquainted with members of First Cloud Journey.
-* Understand basic AWS services, how to use the console & CLI.
+* Create and manage an Amazon EKS cluster.
+* Practice Kubernetes: Pods, Deployments, Services, ConfigMaps, Helm.
 
 ### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
 
+| Day | Task | Start Date | Completion Date | Reference Material |
+| --- | ---- | ---------- | --------------- | ------------------ |
+| Mon | Study Kubernetes architecture: Control Plane, Worker Nodes, etcd; install `eksctl` and `kubectl`. | 15/06/2026 | 15/06/2026 | <https://000126.awsstudygroup.com/><br><https://000065.awsstudygroup.com/> |
+| Tue | Lab 1: Create an EKS Cluster with `eksctl`, configure kubectl, verify node group (`kubectl get nodes`). | 16/06/2026 | 17/06/2026 | <https://000062.awsstudygroup.com/><br><https://000065.awsstudygroup.com/> |
+| Wed | Practice Deployment / Service (ClusterIP, NodePort, LoadBalancer); observe Pod lifecycle. | 18/06/2026 | 18/06/2026 | <https://000126.awsstudygroup.com/> |
+| Thu | Debug CrashLoopBackOff with `kubectl logs` and `kubectl describe`; check required environment variables. | 19/06/2026 | 19/06/2026 | <https://000126.awsstudygroup.com/><br><https://000062.awsstudygroup.com/> |
+| Fri | Review Deployment self-healing and reconciliation loop; summarize ECS vs EKS. | 20/06/2026 | 20/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
 
 ### Week 9 Achievements:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Created an EKS cluster and connected with kubectl.
+* Understood Pod lifecycle, Deployment self-healing and Service types.
+* Debugged CrashLoopBackOff caused by a missing required environment variable.
 
-* Successfully created and configured an AWS Free Tier account.
+### Challenges & Solutions:
 
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
+* Pods stuck in CrashLoopBackOff → used `kubectl logs` / `describe` and found a missing required env var.
 
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
+### Next Week Plan:
 
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+* Learn Data & Analytics: Athena, Glue and QuickSight.

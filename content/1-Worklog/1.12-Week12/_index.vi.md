@@ -1,58 +1,39 @@
 ---
 title: "Worklog Tuần 12"
 date: 2024-01-01
-weight: 2
+weight: 12
 chapter: false
-pre: " <b> 1.12 </b> "
+pre: " <b> 1.12. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
+
+**Thời gian:** 06/07/2026 – 12/07/2026
 
 ### Mục tiêu tuần 12:
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Tổng kết chương trình theo AWS Well-Architected Framework.
+* Hoàn thiện project cuối khóa và hệ thống hóa kiến thức 12 tuần.
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
 
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+| --- | --------- | ------------ | --------------- | -------------- |
+| 2 | Lab 1: Đánh giá kiến trúc bằng Well-Architected Tool theo 6 trụ cột; xác định high-risk issues. | 06/07/2026 | 06/07/2026 | <https://cloudjourney.awsstudygroup.com/><br><https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html> |
+| 3 | Khắc phục các high-risk issues (Security, Reliability, Cost Optimization); dùng Trusted Advisor & Cost Explorer. | 07/07/2026 | 08/07/2026 | <https://000009.awsstudygroup.com/><br><https://000064.awsstudygroup.com/><br><https://000007.awsstudygroup.com/> |
+| 4 | Tích hợp các thành phần project cuối khóa; debug từng layer rồi mới ghép hệ thống. | 09/07/2026 | 09/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 5 | Trace lỗi xuyên suốt bằng CloudWatch Logs; hoàn thiện tài liệu / báo cáo thực tập. | 10/07/2026 | 10/07/2026 | <https://000036.awsstudygroup.com/><br><https://000085.awsstudygroup.com/> |
+| 6 | Tổng kết 12 tuần (VPC, EC2/Lambda/ECS/EKS, S3/RDS/DynamoDB, Athena/Glue, SageMaker/Bedrock, IaC/CI-CD); định hướng thi SAA. | 11/07/2026 | 11/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
 
 ### Kết quả đạt được tuần 12:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Đánh giá và khắc phục 5 high-risk issues theo Well-Architected.
+* Hoàn thiện project cuối khóa và báo cáo thực tập.
+* Hệ thống hóa kiến thức toàn bộ lộ trình FCJ Cloud Journey.
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+### Khó khăn và cách giải quyết:
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
+* Project nhiều layer dễ lỗi cấu hình → debug từng layer độc lập, dùng CloudWatch Logs để trace end-to-end.
 
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
+### Kế hoạch sau thực tập:
 
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+* Ôn thi AWS Certified Solutions Architect – Associate.
+* Áp dụng kiến thức vào dự án thực tế.
