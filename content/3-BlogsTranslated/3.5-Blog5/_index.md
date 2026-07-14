@@ -14,26 +14,40 @@ pre: " <b> 3.5. </b> "
 | --- | --- |
 | Original title | How to get notified on specific Lambda function error patterns using CloudWatch |
 | Source | [AWS Cloud Operations Blog](https://aws.amazon.com/blogs/mt/get-notified-specific-lambda-function-error-patterns-using-cloudwatch/) |
-| Topics | CloudWatch Logs filters, Lambda Errors metric vs log patterns, SNS alerts |
+| Topics | CloudWatch Logs filters / subscriptions, Lambda Errors metric, SNS notifications |
+| Workshop link | Section 5.5 — metric filter `"[ERROR]"` + alarm + SNS |
 
 #### 2. Summary
 
-The article notes that CloudWatch Alarms on Lambda’s **Errors** metric tell you *that* something failed but not **what** the log said. The proposed approach uses a **CloudWatch Logs subscription / filter pattern** (e.g. `ERROR`, `CRITICAL`, custom text) to catch important lines, invoke an “error processing” Lambda, then publish to **SNS** with concrete error details — faster to act on than a red alarm alone.
+The article highlights a practical limit of CloudWatch Alarms on Lambda’s **Errors** metric: you learn *that* something failed, but not **what the log said**. For richer alerts, AWS combines **CloudWatch Logs filter patterns** (e.g. `ERROR`, `CRITICAL`, custom text) with subscriptions: matching lines invoke an error-processing Lambda → publish to **SNS** → email/SMS. That delivers both a signal and context, and can blueprint automated reactions to dangerous patterns.
 
 #### 3. Main content
 
-**3.1. Errors metric vs log filters** — Errors alarms are aggregate signals; log filters catch specific strings like `[ERROR]` in the function’s log group.
+##### 3.1. Errors metric versus log filters
 
-**3.2. Reference flow** — Lambda log group → matching filter → (processor Lambda) → SNS → operator email.
+- **Errors metric**: aggregate per-minute signal — good for “did the function fail?”
+- **Log filters**: match specific strings in CloudWatch Logs (e.g. `"[ERROR]"` written by code). Better for business-specific error text, not only runtime exceptions.
 
-**3.3. Filter patterns** — simple or combined patterns (`?ERROR ?WARN ?5xx`…); CloudWatch Logs filter syntax docs help refine matches.
+##### 3.2. Architecture in the article
 
-#### 4. Reflection (project link)
+Business Lambdas write logs → CloudWatch Logs → matching filter → “error processing” Lambda → SNS topic → subscribers. An event-driven observation pattern.
 
-In **section 5.5** I implemented a related “log error → alert” path:
+##### 3.3. Building and testing filters
+
+Pick log group `/aws/lambda/<function-name>`, set a filter pattern, attach a destination. Validate by forcing matching logs and confirming SNS delivery. Filters that are too broad waste cost; too narrow miss incidents.
+
+##### 3.4. Extensions
+
+The same pattern can drive reactive automation (tickets, remediators), not only email.
+
+#### 4. Reflection
+
+In section 5.5 I implemented a related “log error → alert” path:
 
 1. Metric filter on `/aws/lambda/url-shortener-backend` with pattern `"[ERROR]"`.
 2. Metric `URLShortenerErrorCount` + Alarm `url-shortener-error-alarm`.
 3. SNS email subscription.
 
-Slightly different from the article (subscription → processor Lambda for **log text** in SNS; I used metric filter → alarm → SNS for an **error-count** signal). Same ops goal: notice handler failures early. Alarm **Insufficient data** when no `[ERROR]` lines yet is expected — worth understanding when reading CloudWatch, not a broken alarm.
+![CloudWatch Alarm in the workshop](/images/3-BlogsTranslated/3.5-Blog5/cloudwatch-alarm.png)
+
+Difference vs the article: subscription → processor Lambda for **log text** in SNS; I used metric filter → alarm → SNS for an **error-count** signal. Same **observe → alert** loop. Alarm **Insufficient data** when no `[ERROR]` lines exist is expected — the AWS post helps explain that correctly in the report instead of assuming a bad alarm config.

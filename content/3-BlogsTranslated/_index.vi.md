@@ -8,17 +8,15 @@ pre: " <b> 3. </b> "
 
 # Các bài blogs đã dịch
 
-Phần này trình bày bản dịch / tóm tắt các bài viết kỹ thuật chính thức từ AWS (Compute Blog, News Blog, Database Blog, Cloud Operations Blog và Documentation), được chọn vì **khớp trực tiếp** với kiến trúc URL Shortener mình đã triển khai ở mục Workshop: **S3 + Lambda Function URL + DynamoDB + CloudWatch**.
-
-Mỗi mục nêu rõ nguồn gốc, nội dung chính và nhận xét liên hệ tới dự án báo cáo.
+Phần này trình bày bản dịch và tóm tắt nội dung các bài viết kỹ thuật chính thức từ AWS (Compute Blog, News Blog, Documentation, Database Blog, Cloud Operations Blog). Mỗi mục nêu rõ nguồn gốc bài viết, nội dung chính và các điểm kỹ thuật đáng chú ý — được chọn vì khớp với kiến trúc **URL Shortener serverless** mình triển khai ở mục Workshop (**S3 + Lambda Function URL + DynamoDB + CloudWatch**).
 
 ### [Blog 1 – Build a Serverless, Private URL Shortener](3.1-Blog1/)
 
-Tóm tắt hướng dẫn xây URL shortener serverless trên AWS (Lambda + S3 + API Gateway) và so sánh với cách mình triển khai bằng Lambda Function URL + DynamoDB.
+Tóm tắt hướng dẫn xây URL shortener serverless của AWS (Lambda + S3 + API Gateway, dùng S3 làm redirection engine) và so sánh với thiết kế Lambda Function URL + DynamoDB trong workshop.
 
 ### [Blog 2 – Announcing AWS Lambda Function URLs](3.2-Blog2/)
 
-Tóm tắt cơ chế Lambda Function URL — endpoint HTTPS gắn sẵn cho một hàm — đúng thành phần backend mình dùng thay cho API Gateway.
+Tóm tắt Function URL — endpoint HTTPS gắn sẵn cho một hàm Lambda — cơ chế backend mình dùng thay cho API Gateway, kèm CORS và giới hạn so với API Gateway.
 
 ### [Blog 3 – Tutorial: Configuring a static website on Amazon S3](3.3-Blog3/)
 
@@ -26,8 +24,8 @@ Tóm tắt tài liệu chính thức cấu hình Static Website Hosting, Block P
 
 ### [Blog 4 – Implement resource counters with Amazon DynamoDB](3.4-Blog4/)
 
-Tóm tắt các cách đếm tài nguyên trên DynamoDB, tập trung atomic counter / `UpdateItem` — khớp logic tăng `clickCount` khi redirect.
+Tóm tắt các pattern đếm tài nguyên trên DynamoDB (atomic counter, ConditionExpression, giới hạn độ chính xác) — khớp `clickCount` khi redirect.
 
 ### [Blog 5 – How to get notified on specific Lambda function error patterns using CloudWatch](3.5-Blog5/)
 
-Tóm tắt cách nhận cảnh báo theo pattern lỗi trong log Lambda qua CloudWatch — liên hệ metric filter + alarm + SNS ở mục 5.5.
+Tóm tắt cách nhận cảnh báo theo pattern lỗi trong log Lambda qua CloudWatch / SNS — liên hệ metric filter + alarm ở mục 5.5.

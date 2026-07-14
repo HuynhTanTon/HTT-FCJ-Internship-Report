@@ -15,29 +15,36 @@ pre: " <b> 3.3. </b> "
 | Tiêu đề gốc | Tutorial: Configuring a static website on Amazon S3 |
 | Nguồn | [Amazon S3 User Guide](https://docs.aws.amazon.com/AmazonS3/latest/userguide/HostingWebsiteOnS3Setup.html) |
 | Chủ đề | Static Website Hosting, Block Public Access, Bucket Policy, website endpoint |
+| Liên hệ workshop | Mục 5.4 — frontend `url-shortener-frontend-forward` |
 
 #### 2. Tóm tắt nội dung
 
-Tài liệu chính thức hướng dẫn từng bước biến một bucket S3 thành website tĩnh: tạo bucket, bật Static website hosting và chỉ định `index.html`, chỉnh Block Public Access, thêm Bucket Policy public `GetObject`, upload nội dung, rồi test bằng **website endpoint**. AWS nhấn mạnh S3 website endpoint mặc định là **HTTP**; production nên cân nhắc CloudFront (+ HTTPS) và Origin Access Control thay vì để bucket public nếu muốn giữ Block Public Access bật.
+Tài liệu chính thức hướng dẫn biến bucket S3 thành website tĩnh phục vụ HTML/JS/CSS/ảnh. Quy trình gồm: tạo bucket, bật **Static website hosting** và chỉ định index document (`index.html`), chỉnh **Block Public Access**, gắn **Bucket Policy** cho phép `s3:GetObject` công khai, upload nội dung, rồi kiểm thử bằng **website endpoint**.
+
+AWS nhấn mạnh: website endpoint mặc định là **HTTP** (không HTTPS). Nếu giữ đầy đủ Block Public Access và vẫn muốn website an toàn hơn, docs khuyến nghị dùng **CloudFront** với Origin Access Control (OAC) thay vì mở public bucket thuần.
 
 #### 3. Nội dung chính
 
-**3.1. Bật Static website hosting** — Properties → Static website hosting → Enabled; Index document = `index.html` (phân biệt hoa thường).
+##### 3.1. Bật Static website hosting
 
-**3.2. Quyền công khai** — tắt/chỉnh Block Public Access theo mức cần thiết; gắn policy `Principal: "*"` + `s3:GetObject` trên `arn:aws:s3:::bucket/*`.
+Trong tab Properties, bật hosting kiểu bucket website, đặt Index document khớp chính xác tên file upload (phân biệt hoa thường). Sau khi Save, console hiển thị **Bucket website endpoint** dùng để mở site.
 
-**3.3. Kiểm thử** — dùng Website endpoint (không nhầm với REST endpoint của S3). Upload sai Content-Type hoặc thiếu policy → 403 / Access Denied.
+![Static website hosting đã bật trên bucket workshop](/images/3-BlogsTranslated/3.3-Blog3/s3-website.png)
 
-**3.4. Hạn chế HTTP** — docs khuyến nghị CloudFront khi cần HTTPS, custom domain, header bảo mật tốt hơn.
+##### 3.2. Block Public Access và Bucket Policy
 
-#### 4. Nhận xét (liên hệ dự án)
+Chỉ bật hosting chưa đủ. Object phải được phép đọc công khai (hoặc được CloudFront đọc hộ). Policy tối thiểu cho lab thường là `Principal: "*"`, `Action: s3:GetObject`, `Resource: arn:aws:s3:::bucket-name/*` — **không** cần cấp list/write công khai.
 
-Đây đúng checklist mình đã làm ở mục **5.4**:
+##### 3.3. Upload nội dung và test endpoint
 
-1. Bucket `url-shortener-frontend-forward`
-2. Enable Static website hosting
-3. Bucket Policy public read `GetObject`
-4. Upload `index.html`, `config.js`, ảnh nền
-5. Test e2e trên website endpoint
+Upload `index.html` (và các asset). Mở website endpoint — nếu thiếu policy / còn block public, trình duyệt nhận 403. Cần phân biệt website endpoint với REST API endpoint của S3: hành vi redirect/website chỉ áp dụng đúng website endpoint.
 
-Điểm học thêm từ docs: ranh giới rõ giữa **website endpoint** và **REST endpoint**, và giới hạn HTTP — phù hợp giải thích hạn chế lab trong phần dọn dẹp / hướng cải thiện (CloudFront + ACM).
+![Objects frontend đã upload](/images/3-BlogsTranslated/3.3-Blog3/s3-objects.png)
+
+##### 3.4. Hạn chế và hướng production
+
+HTTP-only, thiếu CDN và TLS — chấp nhận được cho lab. Production nên CloudFront + ACM + (tuỳ chọn) custom domain.
+
+#### 4. Nhận xét
+
+Docs này gần như là checklist mình đã làm trong workshop: bucket `url-shortener-frontend-forward`, enable hosting, policy `GetObject`, upload `index.html`/`config.js`/ảnh nền, test e2e trên website endpoint Singapore. Điểm học thêm quan trọng để viết báo cáo: hiểu vì sao lab còn HTTP, và ghi rõ hướng cải thiện CloudFront — tránh hiểu nhầm S3 website endpoint đã “production-ready HTTPS”.

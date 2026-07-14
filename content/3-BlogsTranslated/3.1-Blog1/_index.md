@@ -14,31 +14,53 @@ pre: " <b> 3.1. </b> "
 | --- | --- |
 | Original title | Build a Serverless, Private URL Shortener |
 | Source | [AWS Compute Blog](https://aws.amazon.com/blogs/compute/build-a-serverless-private-url-shortener/) |
-| Topics | Serverless URL shortener, Lambda, API Gateway, S3 |
+| Topics | Serverless URL shortener, Lambda, API Gateway, S3 website redirect, CloudFront |
+| Workshop link | Section 5 — compare the AWS sample design with my Function URL + DynamoDB architecture |
 
 #### 2. Summary
 
-The article shows how to build a private serverless URL shortener without managing servers. The key idea is using **S3 Static Website Hosting as a redirection engine**: each short link is a (often empty) object with website-redirect metadata to the long URL. Opening the short URL makes S3 return an HTTP redirect without application code at redirect time.
+The article starts from a practical Solutions Architect need: pre-signed URLs are long and hard to share, so the author wants a **private**, self-controlled URL shortener without managing servers. The proposed design uses managed services: **S3**, **API Gateway**, **Lambda**, optionally **CloudFront**, packaged with **CloudFormation**.
 
-Creating short links uses a static admin page on S3; Shorten triggers **API Gateway → Lambda**. Lambda generates a random short id and stores an S3 object with redirect metadata. CloudFront (and a sample CloudFormation stack) can wrap the solution for a unified edge endpoint.
+The key technical idea is **S3 website redirects**: each short link is an (often empty) object with `WebsiteRedirectLocation` metadata pointing to the long URL. Opening the short URL on the website endpoint makes S3 return an HTTP redirect **without Lambda running at redirect time**.
+
+Creating short links uses a static HTML admin page on S3. Shorten → POST to API Gateway → Lambda validates → random short id → PutObject with redirect metadata → return the short URL.
 
 #### 3. Main content
 
-**3.1. S3 as redirection engine** — enable website hosting; each short code is an object key with redirect metadata; S3 serves the redirect on the website endpoint.
+##### 3.1. S3 as a redirection engine
 
-**3.2. Create via API** — static frontend POSTs to API Gateway; Lambda validates, creates a random key, PutObject with redirect metadata, returns the short URL.
+After enabling Static Website Hosting, each short code maps to an object key with website-redirect metadata. Requests to the website endpoint become redirects. This minimizes compute on the read path: no Lambda cold starts when many users only click short links.
 
-**3.3. Optional pieces** — CloudFront for CDN/custom domain; CloudFormation packages S3, Lambda, API Gateway, and helpers.
+![AWS sample architecture: S3 redirect](/images/3-BlogsTranslated/3.1-Blog1/aws-sample-architecture.png)
 
-#### 4. Reflection (project link)
+##### 3.2. Creating short links via API Gateway + Lambda
 
-Same problem domain, different design from my workshop:
+The admin UI is static. Creation logic lives in Lambda behind API Gateway. Lambda generates a short random key, writes the S3 object, and returns a URL reachable via the website/CloudFront.
+
+##### 3.3. CloudFront and infrastructure packaging
+
+CloudFront can unify the entry point and support custom domains. CloudFormation packages S3, Lambda, API Gateway, and helper custom resources.
+
+##### 3.4. What “private” means here
+
+“Private” leans toward **self-hosted / self-controlled** rather than strictly VPC-private. Public website endpoint and bucket policy implications still matter.
+
+#### 4. Reflection
+
+Useful because it matches the shortener problem while showing a different architectural trade-off than my workshop.
 
 | Item | AWS Compute Blog | My workshop |
 | --- | --- | --- |
 | Mapping store | S3 object + redirect metadata | DynamoDB `url-shortener-links` |
 | Redirect | S3 website redirect | Lambda **HTTP 302** |
 | Ingress API | API Gateway | **Lambda Function URL** |
-| Click counting | Not the focus | Atomic `clickCount` on redirect |
+| Clicks / stats | Not the focus | Atomic `clickCount` + `/stats/{code}` |
+| Frontend | Admin HTML on S3 | Shortener UI on S3 + `config.js` |
 
-S3 redirects are lean for “shorten + redirect only.” I chose Lambda + DynamoDB for **click counts**, a **stats** API, and a clear split between S3 frontend and Function URL backend. The article clarifies the trade-off: less code with S3 redirects, but harder to grow app logic (stats, conditional 404, centralized error handling) in one API layer like Function URL.
+![Workshop architecture: Function URL + DynamoDB](/images/3-BlogsTranslated/3.1-Blog1/my-workshop-architecture.png)
+
+S3 redirects are lean for “shorten + redirect only.” When you need clicks, stats, conditional 404s, and centralized handler logging, Function URL + DynamoDB is more flexible. In the workshop I verified **302** with PowerShell and stored mappings in DynamoDB:
+
+![Verified 302 redirect in the workshop](/images/3-BlogsTranslated/3.1-Blog1/redirect-302.png)
+
+Takeaway: multiple valid serverless shortener designs exist; choice depends on extensibility needs.

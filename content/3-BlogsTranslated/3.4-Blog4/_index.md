@@ -14,24 +14,40 @@ pre: " <b> 3.4. </b> "
 | --- | --- |
 | Original title | Implement resource counters with Amazon DynamoDB |
 | Source | [AWS Database Blog](https://aws.amazon.com/blogs/database/implement-resource-counters-with-amazon-dynamodb/) |
-| Topics | Atomic counters, `UpdateItem`, ConditionExpression, concurrency accuracy |
+| Topics | Atomic counters, UpdateItem, ConditionExpression, concurrency accuracy, retries |
+| Workshop link | Sections 5.3 / 5.5 — incrementing `clickCount` on redirect |
 
 #### 2. Summary
 
-The article examines **resource counters** on DynamoDB (votes, inventory, tickets) under concurrent updates. It compares approaches on accuracy, cost, and complexity — from simple **atomic counters** with `UpdateItem`/`ADD` and optional ConditionExpressions, to optimistic concurrency, transactions with client request tokens, and counting via item collections / sets. A key theme: handle 500-series ambiguity (did the update apply?) and choose retry strategies to avoid over/undercounting.
+The article digs into **resource counters** on DynamoDB — votes, inventory, event tickets — that must stay correct under concurrent updates. Undercount/overcount can cause overselling or false rejects. The author covers **seven approaches**, judging accuracy, cost, and complexity, and emphasizes distributed 500-series failures: clients may not know whether an update applied before retrying.
 
 #### 3. Main content
 
-**3.1. Atomic counters** — one `UpdateItem` increments/decrements; DynamoDB serializes item updates. Optional conditions (e.g. never go below zero). Cheap and simple; lower accuracy than transactional patterns under complex failure/retry — fine when approximation or simple conditions are enough.
+##### 3.1. Atomic counters
 
-**3.2. Conditions and thresholds** — ConditionExpression rejects updates that would violate state rules.
+Simplest path: one `UpdateItem` with `ADD` / numeric increment. DynamoDB serializes updates on the same item, so it races less than application-level Get-then-Put. Low cost, short code. Less accurate than some transactional patterns under failure+retry — fine when approximation or simple conditions suffice.
 
-**3.3. Advanced directions** — OCC, TransactWriteItems + client request token, marker items for higher accuracy / idempotency.
+##### 3.2. ConditionExpression and thresholds
 
-#### 4. Reflection (project link)
+Conditions can block updates that would cross a threshold (e.g. never go below zero). On failure, DynamoDB returns a controlled error so the app can respond with 4xx instead of writing bad state.
 
-Maps directly to `clickCount` in my redirect handler:
+##### 3.3. Approaches beyond atomic counters
 
-- `UpdateCommand` / atomic increment instead of Get-then-Put (fewer races).
-- `ConditionExpression: attribute_exists(shortCode)` → missing codes fail cleanly (404) instead of creating stray items.
-- For the lab, an atomic counter is enough to demonstrate clicks; the blog explains why that pattern is sound and when transactions become necessary for stricter counting (e.g. sellable inventory).
+Optimistic concurrency, transactions + client request tokens, marker items, item-collection / set counting — for systems needing stronger idempotency and accuracy (real sellable inventory), at higher cost/complexity.
+
+##### 3.4. SDK retries
+
+SDKs often retry automatically. Non-idempotent counters can overcount after ambiguous failures. Designers must choose: tolerate overcount on retry, undercount without retry, or move to idempotent patterns.
+
+#### 4. Reflection
+
+Atomic counters + conditions map directly to workshop `clickCount` logic:
+
+- Redirect uses `UpdateCommand` for atomic increments instead of Get-then-Put.
+- `ConditionExpression: attribute_exists(shortCode)` → missing codes ConditionalCheckFailed → 404 without creating ghost items.
+
+![DynamoDB table url-shortener-links](/images/3-BlogsTranslated/3.4-Blog4/dynamodb-table.png)
+
+![Items after redirect / clickCount tests](/images/3-BlogsTranslated/3.4-Blog4/dynamodb-items.png)
+
+For a shortener lab, atomic counters are enough to demonstrate clicks. The blog justifies that choice and shows the next step if counting must be absolute later (transactions / idempotency tokens).
