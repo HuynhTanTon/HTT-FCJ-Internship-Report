@@ -1,31 +1,33 @@
 ---
 title: "Translated Blogs"
-date: 2024-01-01
+date: 2026-07-14
 weight: 3
 chapter: false
 pre: " <b> 3. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
+# Translated Blogs
 
-This section will list and introduce the blogs you have translated. For example:
+This section presents translated / summarized official AWS technical articles (Compute Blog, News Blog, Database Blog, Cloud Operations Blog, and Documentation). They were chosen because they map directly to the URL Shortener architecture deployed in the Workshop section: **S3 + Lambda Function URL + DynamoDB + CloudWatch**.
 
-###  [Blog 1 - Getting started with healthcare data lakes: Using microservices](3.1-Blog1/)
-This blog introduces how to start building a data lake in the healthcare sector by applying a microservices architecture. You will learn why data lakes are important for storing and analyzing diverse healthcare data (electronic medical records, lab test data, medical IoT devices…), how microservices help make the system more flexible, scalable, and easier to maintain. The article also guides you through the steps to set up the environment, organize the data processing pipeline, and ensure compliance with security & privacy standards such as HIPAA.
+Each entry lists the source, main content, and a reflection tied to this internship project.
 
-###  [Blog 2 - ...](3.2-Blog2/)
-This blog introduces how to start building a data lake in the healthcare sector by applying a microservices architecture. You will learn why data lakes are important for storing and analyzing diverse healthcare data (electronic medical records, lab test data, medical IoT devices…), how microservices help make the system more flexible, scalable, and easier to maintain. The article also guides you through the steps to set up the environment, organize the data processing pipeline, and ensure compliance with security & privacy standards such as HIPAA.
+### [Blog 1 – Build a Serverless, Private URL Shortener](3.1-Blog1/)
 
-###  [Blog 3 - ...](3.3-Blog3/)
-This blog introduces how to start building a data lake in the healthcare sector by applying a microservices architecture. You will learn why data lakes are important for storing and analyzing diverse healthcare data (electronic medical records, lab test data, medical IoT devices…), how microservices help make the system more flexible, scalable, and easier to maintain. The article also guides you through the steps to set up the environment, organize the data processing pipeline, and ensure compliance with security & privacy standards such as HIPAA.
+Summary of AWS guidance for a serverless URL shortener (Lambda + S3 + API Gateway), compared with my Function URL + DynamoDB design.
 
-###  [Blog 4 - ...](3.4-Blog4/)
-This blog introduces how to start building a data lake in the healthcare sector by applying a microservices architecture. You will learn why data lakes are important for storing and analyzing diverse healthcare data (electronic medical records, lab test data, medical IoT devices…), how microservices help make the system more flexible, scalable, and easier to maintain. The article also guides you through the steps to set up the environment, organize the data processing pipeline, and ensure compliance with security & privacy standards such as HIPAA.
+### [Blog 2 – Announcing AWS Lambda Function URLs](3.2-Blog2/)
 
-###  [Blog 5 - ...](3.5-Blog5/)
-This blog introduces how to start building a data lake in the healthcare sector by applying a microservices architecture. You will learn why data lakes are important for storing and analyzing diverse healthcare data (electronic medical records, lab test data, medical IoT devices…), how microservices help make the system more flexible, scalable, and easier to maintain. The article also guides you through the steps to set up the environment, organize the data processing pipeline, and ensure compliance with security & privacy standards such as HIPAA.
+Summary of Lambda Function URLs — built-in HTTPS endpoints for a single function — the backend approach I used instead of API Gateway.
 
-###  [Blog 6 - ...](3.6-Blog6/)
-This blog introduces how to start building a data lake in the healthcare sector by applying a microservices architecture. You will learn why data lakes are important for storing and analyzing diverse healthcare data (electronic medical records, lab test data, medical IoT devices…), how microservices help make the system more flexible, scalable, and easier to maintain. The article also guides you through the steps to set up the environment, organize the data processing pipeline, and ensure compliance with security & privacy standards such as HIPAA.
+### [Blog 3 – Tutorial: Configuring a static website on Amazon S3](3.3-Blog3/)
+
+Summary of the official static website hosting tutorial (Block Public Access and Bucket Policy) — matching frontend work in section 5.4.
+
+### [Blog 4 – Implement resource counters with Amazon DynamoDB](3.4-Blog4/)
+
+Summary of DynamoDB resource-counter patterns, focusing on atomic counters / `UpdateItem` — matching `clickCount` on redirect.
+
+### [Blog 5 – How to get notified on specific Lambda function error patterns using CloudWatch](3.5-Blog5/)
+
+Summary of alerting on Lambda log error patterns via CloudWatch — related to the metric filter + alarm + SNS setup in section 5.5.
