@@ -1,33 +1,31 @@
 ---
 title: "Workshop"
-date: 2024-01-01
+date: 2026-07-14
 weight: 5
 chapter: false
 pre: " <b> 5. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
-
-# Đảm bảo truy cập Hybrid an toàn đến S3 bằng cách sử dụng VPC endpoint
+# Serverless URL Shortener trên AWS
 
 #### Tổng quan
 
-**AWS PrivateLink** cung cấp kết nối riêng tư đến các dịch vụ aws từ VPCs hoặc trung tâm dữ liệu (on-premise) mà không làm lộ lưu lượng truy cập ra ngoài public internet.
+Mục 5 ghi lại quá trình mình triển khai thực nghiệm ứng dụng **rút gọn đường link (URL Shortener)** chạy hoàn toàn **serverless** trên AWS. Nội dung trình bày theo hướng báo cáo kỹ thuật: mô tả mục tiêu, kiến trúc đã chọn, các bước thực hiện và kết quả đạt được.
 
-Trong bài lab này, chúng ta sẽ học cách tạo, cấu hình, và kiểm tra VPC endpoints để cho phép workload của bạn tiếp cận các dịch vụ AWS mà không cần đi qua Internet công cộng.
+Ứng dụng gồm ba lớp: giao diện web tĩnh trên **Amazon S3**, logic nghiệp vụ trên **AWS Lambda (Function URL)**, và lưu trữ trên **Amazon DynamoDB**. Toàn bộ hệ thống triển khai tại region **ap-southeast-1 (Singapore)**, không quản lý server và không dùng API Gateway riêng.
 
-Chúng ta sẽ tạo hai loại endpoints để truy cập đến Amazon S3: gateway vpc endpoint và interface vpc endpoint. Hai loại vpc endpoints này mang đến nhiều lợi ích tùy thuộc vào việc bạn truy cập đến S3 từ môi trường cloud hay từ trung tâm dữ liệu (on-premise).
-+ **Gateway** - Tạo gateway endpoint để gửi lưu lượng đến Amazon S3 hoặc DynamoDB using private IP addresses. Bạn điều hướng lưu lượng từ VPC của bạn đến gateway endpoint bằng các bảng định tuyến (route tables)
-+ **Interface** - Tạo interface endpoint để gửi lưu lượng đến các dịch vụ điểm cuối (endpoints) sử dụng Network Load Balancer để phân phối lưu lượng. Lưu lượng dành cho dịch vụ điểm cuối được resolved bằng DNS.
+#### Phạm vi đã triển khai
 
-#### Nội dung
+- **Frontend**: bucket S3 `url-shortener-frontend-forward` bật Static Website Hosting, phục vụ `index.html` / `config.js`.
+- **Backend**: hàm Lambda `url-shortener-backend` qua Function URL (`POST /` tạo mã, `GET /{shortCode}` redirect 302, `GET /stats/{shortCode}` xem số liệu).
+- **Dữ liệu**: bảng DynamoDB `url-shortener-links` (partition key `shortCode`) lưu `originalUrl`, `clickCount`, `createdAt`; capacity mode on-demand.
+- **Giám sát (nâng cao)**: đếm click atomic khi redirect; Metric filter + CloudWatch Alarm + SNS khi log có `[ERROR]`.
 
-1. [Tổng quan về workshop](5.1-Workshop-overview/)
-2. [Chuẩn bị](5.2-Prerequiste/)
-3. [Truy cập đến S3 từ VPC](5.3-S3-vpc/)
-4. [Truy cập đến S3 từ TTDL On-premises](5.4-S3-onprem/)
-5. [VPC Endpoint Policies (làm thêm)](5.5-Policy/)
-6. [Dọn dẹp tài nguyên](5.6-Cleanup/)
+#### Cấu trúc mục 5
+
+1. [Tổng quan kiến trúc](5.1-Tong-quan/) — luồng hoạt động end-to-end và lý do chọn S3 + Lambda Function URL + DynamoDB.
+2. [Chuẩn bị](5.2-Chuan-bi/) — tên tài nguyên cố định và IAM Role/policy đã tạo cho Lambda.
+3. [Triển khai Backend](5.3-Backend/) — tạo Lambda, Function URL và kiểm thử API / DynamoDB.
+4. [Triển khai Frontend](5.4-Frontend/) — S3 Static Website, Bucket Policy, upload frontend và test end-to-end.
+5. [Nâng cao (làm thêm)](5.5-Nang-cao/) — `clickCount` atomic và cảnh báo lỗi CloudWatch / SNS.
+6. [Dọn dẹp tài nguyên](5.6-Don-dep/) — danh sách tài nguyên cần thu hồi sau demo để tránh phát sinh chi phí.
