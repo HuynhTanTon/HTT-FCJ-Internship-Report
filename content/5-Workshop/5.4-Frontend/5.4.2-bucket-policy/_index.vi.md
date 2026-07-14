@@ -6,7 +6,11 @@ chapter: false
 pre: " 5.4.2. "
 ---
 
-Để Static Website Hosting phục vụ được `index.html` công khai, mình cấu hình **Bucket Policy** chỉ cấp `s3:GetObject` (không list/write):
+#### Vì sao cần Bucket Policy
+
+Static Website Hosting chỉ “bật công tắc phục vụ website”. Để trình duyệt tải được `index.html` / `config.js` / ảnh nền qua website endpoint, object vẫn phải **được phép đọc công khai**. Mình gắn policy chỉ với action `s3:GetObject` trên prefix object của bucket — không cấp `ListBucket` hay quyền ghi công khai.
+
+#### Policy đã áp dụng
 
 ```json
 {
@@ -23,4 +27,9 @@ pre: " 5.4.2. "
 }
 ```
 
-Các bước thực hiện: **S3** → bucket `url-shortener-frontend-forward` → tab **Permissions** → **Bucket policy** → Edit → Save. Trước đó cần tắt Block Public Access phù hợp để policy public read có hiệu lực.
+Thao tác: S3 → bucket → **Permissions** → tắt Block Public Access ở mức cho phép public policy (theo hướng dẫn console khi Save) → **Bucket policy** → Edit → Save.
+
+#### Ý nghĩa bảo mật trong phạm vi lab
+
+- Người dùng Internet chỉ **đọc** object đã upload; không được list toàn bucket hay upload/xóa qua policy này.
+- Nội dung nhạy cảm không nên để trên bucket public kiểu này. Function URL và dữ liệu mapping nằm ở Lambda/DynamoDB, không nằm trong HTML tĩnh ngoài `config.js` (chỉ chứa endpoint API).

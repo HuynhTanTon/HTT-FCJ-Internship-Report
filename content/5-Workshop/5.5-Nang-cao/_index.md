@@ -6,16 +6,36 @@ chapter: false
 pre: " 5.5. "
 ---
 
+#### Goal of the advanced section
+
+After create/redirect worked, I added two more operational pieces: **safe concurrent click counting** and **alerts when Lambda logs errors**.
+
 #### Click counting (`clickCount`)
 
-In the redirect flow (`GET /{shortCode}`), the code uses `UpdateCommand` to increment `clickCount` **atomically**, with `ConditionExpression: attribute_exists(shortCode)` so missing codes return 404. The IAM policy already includes `dynamodb:UpdateItem` (see section 5.2).
+In the redirect handler (`GET /{shortCode}`), instead of separate Get+Put (race-prone), I used `UpdateCommand` to increment `clickCount` **atomically**:
 
-#### Error alerts with CloudWatch
+- `SET clickCount = if_not_exists(clickCount, :zero) + :inc`
+- `ConditionExpression: attribute_exists(shortCode)` — missing code → ConditionalCheckFailed → **404**.
 
-I configured error monitoring for Lambda:
+Concurrent redirects then increment more correctly than manual read-modify-write. IAM already includes `dynamodb:UpdateItem` (section 5.2).
 
-1. A metric filter on log group `/aws/lambda/url-shortener-backend` with pattern `"[ERROR]"`, metric `URLShortenerErrorCount` (namespace `URLShortener`).
-2. CloudWatch Alarm `url-shortener-error-alarm` on that metric (threshold per alarm settings — state becomes OK / In alarm when datapoints exist).
-3. An SNS topic with email subscription for alarm notifications.
+#### CloudWatch + SNS error alerts
+
+Monitoring chain I configured:
+
+1. **Metric filter** on `/aws/lambda/url-shortener-backend`  
+   - Pattern: `"[ERROR]"`  
+   - Metric: `URLShortenerErrorCount` (namespace `URLShortener`)
+2. **Alarm** `url-shortener-error-alarm` on that metric (~5-minute evaluation window).
+3. **SNS** email subscription — confirm before real alert mail arrives.
 
 ![cloudwatch alarm](/images/5-Workshop/5.5-Nang-cao/alarm.png)
+
+#### What Insufficient data means
+
+The alarm often shows **Insufficient data** when there are no datapoints yet (no `"[ERROR]"` logs in the evaluation window). That does **not** mean the alarm is broken — only that no error signal arrived. When Lambda logs enough `[ERROR]` lines, the metric rises and the alarm can go **In alarm** and notify SNS.
+
+#### Value added
+
+- `clickCount` turns the demo into a shortener with minimal usage metrics.
+- Metric filter + Alarm + SNS shows an **observe → alert** loop without a heavy Grafana stack.

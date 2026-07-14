@@ -6,13 +6,20 @@ chapter: false
 pre: " 5.4. "
 ---
 
-#### S3 Static Website Hosting
+#### Goal
 
-This section records how I created the S3 bucket, enabled Static website hosting, applied a public-read Bucket Policy, uploaded `index.html` / `config.js` (pointing at the real Function URL), and verified the end-to-end flow in a browser.
+Host the shortener UI on S3 Static Website Hosting, point `config.js` at the real Function URL, then verify the full browser flow (including CORS).
 
-#### What I completed
+#### What I did
 
-- [Create S3 bucket & enable Static website hosting](5.4.1-tao-bucket/)
-- [Configure Bucket Policy for public read](5.4.2-bucket-policy/)
-- [Upload frontend & configure Function URL](5.4.3-upload-frontend/)
+1. Created bucket `url-shortener-frontend-forward` and enabled Static website hosting.
+2. Applied a public-read Bucket Policy (`GetObject` only).
+3. Uploaded `index.html`, `config.js`, and the background image.
+4. Tested create / redirect / Network tab behavior.
+
+Details:
+
+- [Create S3 bucket & Static website hosting](5.4.1-tao-bucket/)
+- [Public-read Bucket Policy](5.4.2-bucket-policy/)
+- [Upload frontend & Function URL](5.4.3-upload-frontend/)
 - [End-to-end test](5.4.4-test-e2e/)

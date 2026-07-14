@@ -6,9 +6,11 @@ chapter: false
 pre: " 5.3.2. "
 ---
 
-#### Short-link creation test
+#### Test goals
 
-I called the create API with `curl` (and later via the UI once the frontend was ready):
+Verify the backend works without the frontend for create, 302 redirect, and stats — then cross-check DynamoDB items.
+
+#### 1) Create short link (`POST /`)
 
 ```bash
 curl -X POST https://<function-url>/ \
@@ -16,36 +18,55 @@ curl -X POST https://<function-url>/ \
   -d '{"url":"https://www.google.com"}'
 ```
 
-Sample response:
+Sample success response:
 
 ```json
-{ "shortCode": "aZ3kT9", "shortUrl": "https://<function-url>/aZ3kT9", "originalUrl": "https://www.google.com" }
+{
+  "shortCode": "aZ3kT9",
+  "shortUrl": "https://<function-url>/aZ3kT9",
+  "originalUrl": "https://www.google.com"
+}
 ```
+
+After the frontend was wired, the UI produced the same Function URL + short-code shape:
 
 ![Short link result in the UI](/images/5-Workshop/5.3-Backend/frontend-shorten-result.png)
 
-#### Redirect test
+#### 2) Redirect (`GET /{shortCode}`)
 
-Opening a short URL in the browser returns **302** to the original URL. I verified the status with PowerShell:
+Opening the short URL in a browser should land on the original URL. To **observe HTTP 302** without auto-follow, I used PowerShell:
 
 ```powershell
 Invoke-WebRequest -Uri "https://<function-url>/<shortCode>" -MaximumRedirection 0
 ```
 
+Observed: `StatusCode = 302`, `StatusDescription = Found` — proof of a real redirect response.
+
 ![Test redirect HTTP 302](/images/5-Workshop/5.3-Backend/test-redirect-302.png)
 
-#### Stats test
+#### 3) Stats (`GET /stats/{shortCode}`)
 
 ```bash
 curl https://<function-url>/stats/<shortCode>
 ```
 
 ```json
-{ "shortCode": "aZ3kT9", "originalUrl": "https://www.google.com", "clickCount": 1, "createdAt": "..." }
+{
+  "shortCode": "aZ3kT9",
+  "originalUrl": "https://www.google.com",
+  "clickCount": 1,
+  "createdAt": "..."
+}
 ```
 
-#### DynamoDB verification
+Successful redirects increase `clickCount`; `/stats/...` only reads.
 
-In DynamoDB → table `url-shortener-links` → **Explore table items**, I confirmed items were created/updated correctly (`shortCode`, `originalUrl`, `clickCount`, `createdAt`).
+#### 4) DynamoDB cross-check
+
+In **Explore table items** for `url-shortener-links`, items showed `shortCode`, `originalUrl`, `clickCount`, `createdAt` matching the codes created during tests.
 
 ![dynamodb items](/images/5-Workshop/5.3-Backend/dynamodb-items.png)
+
+#### Backend test conclusion
+
+The backend covers the shortener lifecycle: write mapping → redirect with counting → read stats. Common failures during testing (CORS, IAM 403, ConditionalCheckFailed for bad codes) were diagnosable from the function’s CloudWatch Logs.

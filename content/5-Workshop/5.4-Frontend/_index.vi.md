@@ -6,13 +6,20 @@ chapter: false
 pre: " 5.4. "
 ---
 
-#### Static Website Hosting trên S3
+#### Mục tiêu
 
-Phần này ghi lại việc mình tạo bucket S3, bật Static website hosting, gắn Bucket Policy public read, upload `index.html` / `config.js` (trỏ Function URL thật), rồi kiểm thử end-to-end trên trình duyệt.
+Đưa giao diện rút gọn link lên S3 Static Website Hosting, nối `config.js` với Function URL thật, rồi kiểm thử toàn luồng trên trình duyệt (kèm CORS).
 
-#### Nội dung đã thực hiện
+#### Việc đã làm
 
-- [Tạo S3 bucket & bật Static website hosting](5.4.1-tao-bucket/)
-- [Cấu hình Bucket Policy cho phép đọc công khai](5.4.2-bucket-policy/)
-- [Upload frontend & cấu hình Function URL](5.4.3-upload-frontend/)
+1. Tạo bucket `url-shortener-frontend-forward`, bật Static website hosting.
+2. Gắn Bucket Policy public `GetObject` để website endpoint đọc được object.
+3. Upload `index.html`, `config.js`, ảnh nền.
+4. Test tạo link / redirect / quan sát Network.
+
+Chi tiết:
+
+- [Tạo S3 bucket & Static website hosting](5.4.1-tao-bucket/)
+- [Bucket Policy public read](5.4.2-bucket-policy/)
+- [Upload frontend & Function URL](5.4.3-upload-frontend/)
 - [Test end-to-end](5.4.4-test-e2e/)

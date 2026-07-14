@@ -10,22 +10,35 @@ pre: " <b> 5. </b> "
 
 #### Overview
 
-Section 5 records how I deployed a fully **serverless URL Shortener** on AWS. It is written as a technical report: goals, chosen architecture, steps performed, and results achieved.
+Section 5 records how I deployed a **URL Shortener** in a fully **serverless** model on AWS. The goal was not only a working demo, but a clear understanding of how the pieces fit together: static frontend, business API, and low-latency key-value storage.
 
-The app has three layers: a static UI on **Amazon S3**, business logic on **AWS Lambda (Function URL)**, and storage on **Amazon DynamoDB**. Everything runs in **ap-southeast-1 (Singapore)**, with no servers to manage and no separate API Gateway.
+The architecture uses **Amazon S3** (Static Website Hosting) + **AWS Lambda Function URL** + **Amazon DynamoDB** in **ap-southeast-1 (Singapore)**. No EC2 and no API Gateway — Function URL is the public HTTPS API endpoint.
+
+#### Problem and approach
+
+The app needs three core operations:
+
+1. Accept a long URL → generate `shortCode` → store the mapping and return `shortUrl`.
+2. When a user opens `shortUrl` → look up `originalUrl` → **HTTP 302** redirect, while incrementing `clickCount`.
+3. Allow stats (`/stats/{shortCode}`) without increasing clicks.
+
+For this lab, Function URL + on-demand DynamoDB is enough: fast to deploy, low pay-per-request cost, and a complete serverless path.
 
 #### What was deployed
 
-- **Frontend**: S3 bucket `url-shortener-frontend-forward` with Static Website Hosting serving `index.html` / `config.js`.
-- **Backend**: Lambda `url-shortener-backend` via Function URL (`POST /` create, `GET /{shortCode}` 302 redirect, `GET /stats/{shortCode}` stats).
-- **Data**: DynamoDB table `url-shortener-links` (partition key `shortCode`) with `originalUrl`, `clickCount`, `createdAt`; on-demand capacity.
-- **Monitoring (advanced)**: atomic click counting on redirect; Metric filter + CloudWatch Alarm + SNS on `[ERROR]` logs.
+| Layer | Resource | Role |
+| --- | ---------- | ------- |
+| Frontend | S3 bucket `url-shortener-frontend-forward` | Serves UI (`index.html`, `config.js`) |
+| Backend | Lambda `url-shortener-backend` + Function URL | Create, redirect, stats |
+| Data | DynamoDB `url-shortener-links` | Stores `shortCode` ↔ `originalUrl`, `clickCount` |
+| IAM | Role + DynamoDB policy | Least privilege for Lambda |
+| Monitoring | CloudWatch metric filter + Alarm + SNS | Alerts on `[ERROR]` logs |
 
 #### Section 5 structure
 
-1. [Architecture overview](5.1-Tong-quan/) — end-to-end flow and why S3 + Lambda Function URL + DynamoDB were chosen.
-2. [Prerequisites](5.2-Chuan-bi/) — fixed resource names and the IAM role/policy created for Lambda.
-3. [Deploy Backend](5.3-Backend/) — Lambda, Function URL, and API / DynamoDB verification.
-4. [Deploy Frontend](5.4-Frontend/) — S3 Static Website, Bucket Policy, upload, and end-to-end test.
-5. [Advanced (bonus)](5.5-Nang-cao/) — atomic `clickCount` and CloudWatch / SNS alerts.
-6. [Clean up resources](5.6-Don-dep/) — resources to tear down after the demo to avoid ongoing charges.
+1. [Architecture overview](5.1-Tong-quan/) — request flow and service choices.
+2. [Prerequisites](5.2-Chuan-bi/) — DynamoDB table and IAM role/policy.
+3. [Deploy Backend](5.3-Backend/) — Lambda, Function URL, API tests.
+4. [Deploy Frontend](5.4-Frontend/) — S3 hosting, Bucket Policy, upload, e2e.
+5. [Advanced](5.5-Nang-cao/) — atomic click counting and CloudWatch alerts.
+6. [Clean up](5.6-Don-dep/) — tear down resources after the demo.

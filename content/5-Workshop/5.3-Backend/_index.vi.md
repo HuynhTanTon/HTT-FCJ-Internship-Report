@@ -6,11 +6,18 @@ chapter: false
 pre: " 5.3. "
 ---
 
-#### Backend serverless
+#### Mục tiêu
 
-Ở phần này mình triển khai hàm Lambda `url-shortener-backend`, gắn IAM Role đã tạo, triển khai code xử lý (`handler.mjs` / `index.mjs`) và bật Function URL để frontend gọi trực tiếp — không qua API Gateway.
+Triển khai lớp xử lý nghiệp vụ: Lambda nhận HTTPS request qua Function URL, đọc/ghi DynamoDB, trả JSON hoặc redirect 302.
 
-#### Nội dung đã thực hiện
+#### Việc đã làm
+
+1. Tạo function `url-shortener-backend` (Node.js 20.x), gắn execution role có quyền DynamoDB.
+2. Triển khai logic handler: `POST /`, `GET /{shortCode}`, `GET /stats/{shortCode}`, xử lý CORS/OPTIONS.
+3. Bật Function URL (Auth `NONE` + CORS).
+4. Kiểm thử bằng curl/PowerShell và đối chiếu dữ liệu trên DynamoDB.
+
+Chi tiết từng bước:
 
 - [Tạo Lambda function & Function URL](5.3.1-tao-lambda/)
 - [Test API](5.3.2-test-lambda/)

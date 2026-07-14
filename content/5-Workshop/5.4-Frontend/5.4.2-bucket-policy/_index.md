@@ -6,7 +6,11 @@ chapter: false
 pre: " 5.4.2. "
 ---
 
-To make Static Website Hosting serve `index.html` publicly, I configured a **Bucket Policy** with only `s3:GetObject` (no list/write):
+#### Why a Bucket Policy is required
+
+Static Website Hosting only turns on website serving. For the browser to load `index.html` / `config.js` / the background image via the website endpoint, objects still need **public read**. I attached a policy with only `s3:GetObject` on the bucket’s object ARN — no public `ListBucket` or write.
+
+#### Policy applied
 
 ```json
 {
@@ -23,4 +27,9 @@ To make Static Website Hosting serve `index.html` publicly, I configured a **Buc
 }
 ```
 
-Steps: **S3** → bucket `url-shortener-frontend-forward` → **Permissions** → **Bucket policy** → Edit → Save. Block Public Access settings were adjusted as needed so the public-read policy could take effect.
+Path: S3 → bucket → **Permissions** → adjust Block Public Access as prompted → **Bucket policy** → Edit → Save.
+
+#### Security meaning in this lab
+
+- Internet clients can **read** uploaded objects only; they cannot list the whole bucket or upload/delete via this policy.
+- Sensitive data should not live on a public bucket like this. Mapping data stays in Lambda/DynamoDB; static HTML only exposes the API endpoint via `config.js`.

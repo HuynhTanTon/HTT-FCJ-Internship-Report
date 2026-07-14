@@ -6,17 +6,38 @@ chapter: false
 pre: " 5.6. "
 ---
 
-#### Summary
+#### Summary of what was completed
 
-After finishing the deployment, I had a serverless URL shortener on AWS with **S3** (frontend), **Lambda Function URL** (backend), **DynamoDB** (storage), and error monitoring via **CloudWatch** / SNS. This section lists resources to tear down after the demo to avoid ongoing charges.
+In this workshop I built an end-to-end serverless URL Shortener:
 
-#### Resources to clean up
+- **S3** serves the UI and connects to the backend via `config.js`.
+- **Lambda Function URL** handles create, 302 redirect, stats, and CORS.
+- **DynamoDB** stores `shortCode` ↔ `originalUrl` and `clickCount`.
+- **CloudWatch + SNS** watch errors via metric filter / alarm.
 
-1. Lambda function `url-shortener-backend` (including Function URL).
+The architecture is enough to demonstrate serverless in an internship report, while also exposing lab limits (HTTP website endpoint, Auth `NONE`, no custom domain / WAF / CI-CD yet).
+
+#### Limits and next improvements
+
+| Current limit | Improvement direction |
+| ---------------- | ---------------- |
+| S3 website endpoint over HTTP | CloudFront + ACM (HTTPS, custom domain) |
+| Function URL Auth `NONE` | IAM/JWT, API keys, or WAF rate limits |
+| Short random codes | collision checks, longer codes, or nanoid with existence checks |
+| Monitoring mostly ERROR count | latency/error dashboards, multi-metric alarms |
+| Manual console deploy | IaC (SAM/CDK/Terraform) + pipeline |
+
+#### Resources to tear down after the demo
+
+To avoid cost and leftover public endpoints, related resources should be removed:
+
+1. Lambda `url-shortener-backend` (including Function URL).
 2. DynamoDB table `url-shortener-links`.
-3. All objects in S3 bucket `url-shortener-frontend-forward`, then delete the bucket.
-4. The IAM role attached to Lambda (for example the deleted role `url-shortener-backend-role-...` or `url-shortener-lambda-role`) and its DynamoDB policy.
-5. CloudWatch Alarm `url-shortener-error-alarm`, Metric filter, and Log group `/aws/lambda/url-shortener-backend`.
-6. SNS topic used for alerts.
+3. Empty + delete bucket `url-shortener-frontend-forward`.
+4. IAM role attached to Lambda (for example deleted role `url-shortener-backend-role-...`) and its DynamoDB policy.
+5. CloudWatch Alarm `url-shortener-error-alarm`, metric filter, log group `/aws/lambda/url-shortener-backend` (if no longer needed).
+6. SNS topic / email subscription used for the alarm.
 
 ![cleanup](/images/5-Workshop/5.6-Don-dep/cleanup.png)
+
+The screenshot records deleting the IAM role after removing the function — part of the real cleanup on the account.

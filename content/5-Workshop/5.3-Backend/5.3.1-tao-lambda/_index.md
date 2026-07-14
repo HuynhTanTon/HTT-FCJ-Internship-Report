@@ -6,22 +6,56 @@ chapter: false
 pre: " 5.3.1. "
 ---
 
-I created the Lambda function with this configuration:
+#### Function configuration
 
-1. **Create function** → Author from scratch
-   - Function name: `url-shortener-backend`
-   - Runtime: **Node.js 20.x**
-   - Execution role: `url-shortener-lambda-role`
+| Property | Value |
+| ---------- | ------- |
+| Name | `url-shortener-backend` |
+| Runtime | Node.js 20.x |
+| Handler file | `index.mjs` |
+| Region | `ap-southeast-1` |
+| Env | `TABLE_NAME=url-shortener-links` |
+| Function URL Auth | `NONE` |
+| CORS | Allow origin `*`, methods `GET, POST` (plus OPTIONS preflight) |
 
-2. In the **Code** tab, I replaced `index.mjs` with the URL shortener handler (AWS SDK v3 is available in the Lambda runtime — `@aws-sdk/client-dynamodb`, `@aws-sdk/lib-dynamodb` — so no `npm install` on the console).
-
-3. **Configuration → Environment variables**:
-   - `TABLE_NAME` = `url-shortener-links`
-
-4. Enabled **Function URL**:
-   - Auth type: `NONE` (public shortener API)
-   - CORS: `Access-Control-Allow-Origin: *`, methods `GET, POST`
+I chose Node.js 20 because the Lambda runtime already includes AWS SDK v3 (`@aws-sdk/client-dynamodb`, `@aws-sdk/lib-dynamodb`) — paste code in the console and run, with no `node_modules` packaging for this lab.
 
 ![lambda](/images/5-Workshop/5.3-Backend/create-lambda.png)
 
-The Function URL (`https://xxxx.lambda-url.ap-southeast-1.on.aws/`) was then used to configure the frontend.
+#### Core handler logic
+
+**1) Create — `POST /`**
+
+- Parse JSON body for `url`.
+- Generate a ~6-character random `shortCode`.
+- `PutCommand` into `TABLE_NAME` with `shortCode`, `originalUrl`, `clickCount: 0`, `createdAt`.
+- Return `{ shortCode, shortUrl, originalUrl }` where `shortUrl = functionUrl + "/" + shortCode`.
+
+**2) Redirect — `GET /{shortCode}`**
+
+- `UpdateCommand` increments `clickCount` atomically.
+- `ConditionExpression: attribute_exists(shortCode)` → missing code → **404**.
+- Success → **302** with `Location: originalUrl`.
+
+**3) Stats — `GET /stats/{shortCode}`**
+
+- Return `{ shortCode, originalUrl, clickCount, createdAt }` **without** incrementing.
+
+**4) CORS**
+
+- JSON/redirect responses need `Access-Control-Allow-Origin: *` because the S3 website origin differs from the Function URL origin.
+- `OPTIONS` preflight must return CORS headers — otherwise the browser blocks `POST` even if Lambda runs.
+
+#### Function URL
+
+After enabling Function URL, I copied an endpoint like:
+
+`https://xxxx.lambda-url.ap-southeast-1.on.aws/`
+
+That value goes into frontend `config.js` (section 5.4). Auth `NONE` fits a public lab shortener; production should add auth, rate limits, or CloudFront in front.
+
+#### Configuration pitfalls
+
+- Wrong `TABLE_NAME`/region → Put/Update failures (visible in CloudWatch Logs).
+- Role missing `dynamodb:UpdateItem` → create may work, redirect click increment fails.
+- Enabling CORS only on Function URL is not enough if the handler omits CORS headers on real responses.
