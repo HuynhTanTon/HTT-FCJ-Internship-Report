@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 2.6. </b> "
 ---
 
-# Ước tính ngân sách
-
 Chi phí lab hiện tại thường nằm quanh Free Tier nếu traffic thấp. Khi bổ sung CloudFront / WAF / log dài ngày, chi phí có thể tăng nhẹ — vẫn kỳ vọng **hàng USD hoặc thấp hơn mỗi tháng** nếu giữ quy mô demo.
 
 #### Nội dung

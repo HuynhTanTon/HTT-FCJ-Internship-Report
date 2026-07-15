@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 4. </b> "
 ---
 
-# Các events đã tham gia
-
 Trong quá trình thực tập tại First Cloud Journey – AWS FCJ HCM, mình đã tham gia các sự kiện học thuật / cộng đồng liên quan AWS và FCAJ. Dưới đây là thông tin tóm tắt và bài thu hoạch chi tiết.
 
 ### [Event 1](4.1-Event1/)

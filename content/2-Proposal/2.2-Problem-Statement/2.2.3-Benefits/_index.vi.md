@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 2.2.3 </b> "
 ---
 
-# Lợi ích kỳ vọng
-
 | Lợi ích | Mô tả |
 | --- | --- |
 | An toàn hơn khi public | HTTPS + giảm bề mặt public bucket/API Auth NONE |

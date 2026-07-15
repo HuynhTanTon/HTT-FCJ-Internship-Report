@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 2.7. </b> "
 ---
 
-# Đánh giá rủi ro
-
 | Rủi ro | Mức ảnh hưởng | Khả năng | Giảm thiểu |
 | --- | --- | --- | --- |
 | Abuse API Auth NONE | Cao | Trung bình | WAF rate limit, auth, monitoring |

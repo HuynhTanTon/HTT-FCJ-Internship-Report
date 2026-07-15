@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 3. </b> "
 ---
 
-# Translated Blogs
-
 This section presents translated summaries of official AWS technical articles (Compute Blog, News Blog, Documentation, Database Blog, Cloud Operations Blog). Each entry lists the source, main content, and notable technical points — chosen because they map to the **serverless URL Shortener** architecture in the Workshop section (**S3 + Lambda Function URL + DynamoDB + CloudWatch**).
 
 ### [Blog 1 – Build a Serverless, Private URL Shortener](3.1-Blog1/)

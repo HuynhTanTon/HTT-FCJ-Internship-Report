@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 2.6.1 </b> "
 ---
 
-# Items that may add cost
-
 | Item | Notes |
 | --- | --- |
 | CloudFront | Requests + egress; public ACM certs are typically no charge |

@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 3.5. </b> "
 ---
 
-# How to get notified on specific Lambda function error patterns using CloudWatch
-
 #### 1. Source information
 
 | Item | Details |

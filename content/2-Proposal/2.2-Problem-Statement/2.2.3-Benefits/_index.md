@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 2.2.3 </b> "
 ---
 
-# Expected benefits
-
 | Benefit | Description |
 | --- | --- |
 | Safer when public | HTTPS + smaller public-bucket / Auth NONE surface |

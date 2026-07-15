@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 2.6.2 </b> "
 ---
 
-# Ngân sách theo mức mở rộng
-
 | Mức | Phạm vi | Kỳ vọng chi phí / tháng (lab) |
 | --- | --- | --- |
 | M0 – Hiện tại | S3 + Lambda URL + DynamoDB + Alarm cơ bản | ~$0–2 (thường Free Tier) |

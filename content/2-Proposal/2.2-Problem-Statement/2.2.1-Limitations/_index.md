@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 2.2.1 </b> "
 ---
 
-# Remaining limitations
-
 | Group | Current limitation | Impact |
 | --- | --- | --- |
 | Frontend / edge | Default S3 website endpoint is **HTTP**; no CloudFront / custom domain | No TLS; browser “Not secure”; hard to attach a real domain |

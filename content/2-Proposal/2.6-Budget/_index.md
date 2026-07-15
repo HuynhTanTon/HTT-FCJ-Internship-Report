@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 2.6. </b> "
 ---
 
-# Budget estimate
-
 Current lab cost usually stays near Free Tier at low traffic. Adding CloudFront / WAF / longer log retention can increase spend slightly — still expected around **a few USD/month or less** at demo scale.
 
 #### Contents

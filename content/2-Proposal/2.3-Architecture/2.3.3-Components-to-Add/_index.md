@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 2.3.3 </b> "
 ---
 
-# Components to add
-
 | Component | Role |
 | --- | --- |
 | Amazon CloudFront | HTTPS edge, static cache, unified entry |

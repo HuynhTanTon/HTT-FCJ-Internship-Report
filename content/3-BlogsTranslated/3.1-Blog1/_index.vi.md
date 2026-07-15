@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 3.1. </b> "
 ---
 
-# Build a Serverless, Private URL Shortener
-
 #### 1. Thông tin nguồn
 
 | Hạng mục | Nội dung |

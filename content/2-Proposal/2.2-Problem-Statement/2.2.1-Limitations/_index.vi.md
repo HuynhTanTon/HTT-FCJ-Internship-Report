@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 2.2.1 </b> "
 ---
 
-# Hạn chế còn tồn tại
-
 | Nhóm | Hạn chế hiện tại | Ảnh hưởng |
 | --- | --- | --- |
 | Frontend / biên | S3 website endpoint mặc định **HTTP**, chưa CloudFront / custom domain | Thiếu TLS; trình duyệt cảnh báo “Not secure”; khó gắn domain thật |

@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 2.3. </b> "
 ---
 
-# Proposed solution architecture
-
 This section describes the target architecture after expansion, while keeping the S3 + Lambda + DynamoDB core already built in the workshop.
 
 #### Current architecture (baseline)

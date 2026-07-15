@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 2.3.3 </b> "
 ---
 
-# Các thành phần nên bổ sung
-
 | Thành phần | Vai trò |
 | --- | --- |
 | Amazon CloudFront | HTTPS edge, cache tĩnh, gom entry point |

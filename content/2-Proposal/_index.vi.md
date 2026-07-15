@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 2. </b> "
 ---
 
-# Bản đề xuất phát triển dự án
-
 #### Bối cảnh và mục đích
 
 Trong phạm vi thực tập, dự án **Serverless URL Shortener** đã hoàn thành giai đoạn xây dựng nền tảng: giao diện tĩnh trên **Amazon S3**, backend **AWS Lambda Function URL**, lưu trữ mapping trên **Amazon DynamoDB**, kèm giám sát lỗi cơ bản bằng **CloudWatch** (metric filter / alarm) và **SNS**.

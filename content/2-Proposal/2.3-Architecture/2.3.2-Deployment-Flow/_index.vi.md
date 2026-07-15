@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 2.3.2 </b> "
 ---
 
-# Luồng triển khai sau khi mở rộng
-
 1. Người dùng mở `https://short.example.com` (CloudFront).
 2. Asset tĩnh (`index.html`, JS, ảnh) lấy từ S3 qua OAC.
 3. Browser gọi API qua cùng domain hoặc domain API được WAF bảo vệ.

@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 2.3. </b> "
 ---
 
-# Kiến trúc giải pháp đề xuất
-
 Mục này mô tả kiến trúc mục tiêu sau khi mở rộng, vẫn giữ lõi S3 + Lambda + DynamoDB đã triển khai trong workshop.
 
 #### Kiến trúc hiện tại (baseline)

@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 4.2. </b> "
 ---
 
-# Bài thu hoạch: Event 2
-
 ### Thông tin sự kiện
 
 | Hạng mục | Nội dung |

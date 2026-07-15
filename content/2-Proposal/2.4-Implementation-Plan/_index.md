@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 2.4. </b> "
 ---
 
-# Proposed implementation plan
-
 #### Priority phases
 
 | Phase | Main work | Verification |

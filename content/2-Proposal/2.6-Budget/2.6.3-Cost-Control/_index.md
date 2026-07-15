@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 2.6.3 </b> "
 ---
 
-# Cost-control recommendations
-
 - Create an **AWS Budget** (e.g. $5 / $10 thresholds) with SNS email.
 - Keep CloudWatch Logs **retention** short for labs (7–14 days).
 - After demos: delete/disable CloudFront, empty S3, delete DynamoDB tables if unused.

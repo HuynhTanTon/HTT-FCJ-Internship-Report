@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 5. </b> "
 ---
 
-# Serverless URL Shortener trên AWS
-
 #### Tổng quan
 
 Mục 5 ghi lại quá trình mình triển khai ứng dụng **rút gọn đường link (URL Shortener)** theo mô hình **serverless** trên AWS. Mục tiêu không chỉ “chạy được demo”, mà còn nắm rõ cách các dịch vụ ghép với nhau: frontend tĩnh, API xử lý nghiệp vụ, và CSDL key-value có độ trễ thấp.

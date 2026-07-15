@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 2.2. </b> "
 ---
 
-# Tuyên bố vấn đề
-
 #### Tổng quan
 
 Sau giai đoạn triển khai nền tảng, dự án đã chứng minh quy trình serverless từ frontend S3 đến Lambda Function URL và DynamoDB. Tuy nhiên, phạm vi hiện tại chủ yếu phù hợp minh họa kỹ thuật, thực hành lab và báo cáo — chưa đáp ứng đầy đủ yêu cầu vận hành dài hạn trên Internet công khai.

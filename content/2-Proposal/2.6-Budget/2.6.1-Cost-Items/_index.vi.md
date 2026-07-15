@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 2.6.1 </b> "
 ---
 
-# Hạng mục phát sinh chi phí
-
 | Hạng mục | Ghi chú |
 | --- | --- |
 | CloudFront | Request + data transfer ra; HTTPS certificate qua ACM thường không tính phí công khai |

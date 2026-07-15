@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 2.3.2 </b> "
 ---
 
-# Deployment flow after expansion
-
 1. User opens `https://short.example.com` (CloudFront).
 2. Static assets (`index.html`, JS, images) come from S3 via OAC.
 3. Browser calls the API on the same domain or a WAF-protected API domain.

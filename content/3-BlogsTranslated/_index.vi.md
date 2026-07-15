@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 3. </b> "
 ---
 
-# Các bài blogs đã dịch
-
 Phần này trình bày bản dịch và tóm tắt nội dung các bài viết kỹ thuật chính thức từ AWS (Compute Blog, News Blog, Documentation, Database Blog, Cloud Operations Blog). Mỗi mục nêu rõ nguồn gốc bài viết, nội dung chính và các điểm kỹ thuật đáng chú ý — được chọn vì khớp với kiến trúc **URL Shortener serverless** mình triển khai ở mục Workshop (**S3 + Lambda Function URL + DynamoDB + CloudWatch**).
 
 ### [Blog 1 – Build a Serverless, Private URL Shortener](3.1-Blog1/)

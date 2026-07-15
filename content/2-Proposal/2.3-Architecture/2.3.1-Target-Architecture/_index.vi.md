@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 2.3.1 </b> "
 ---
 
-# Định hướng kiến trúc mục tiêu
-
 ```text
 [ User ]
    │  HTTPS

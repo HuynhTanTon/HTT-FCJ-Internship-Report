@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 2.7. </b> "
 ---
 
-# Risk assessment
-
 | Risk | Impact | Likelihood | Mitigation |
 | --- | --- | --- | --- |
 | Abuse of Auth NONE API | High | Medium | WAF rate limit, auth, monitoring |

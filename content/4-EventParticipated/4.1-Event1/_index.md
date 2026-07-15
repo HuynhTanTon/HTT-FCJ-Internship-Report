@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 4.1. </b> "
 ---
 
-# Event write-up: Event 1
-
 ### Event information
 
 | Item | Details |

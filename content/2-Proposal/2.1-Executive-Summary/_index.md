@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 2.1. </b> "
 ---
 
-# Executive summary
-
 #### Current project state
 
 The Serverless URL Shortener already demonstrates an end-to-end AWS serverless shortener: static frontend on S3 Static Website Hosting, a single Lambda backend via Function URL (create, 302 redirect, stats), DynamoDB on-demand storage for `shortCode` ↔ `originalUrl` and `clickCount`, plus metric filter / CloudWatch Alarm / SNS on `[ERROR]` logs.

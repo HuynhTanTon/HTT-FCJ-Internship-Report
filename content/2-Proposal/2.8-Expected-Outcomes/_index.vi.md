@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 2.8. </b> "
 ---
 
-# Kết quả kỳ vọng
-
 #### Tiêu chí thành công kỹ thuật
 
 - Frontend truy cập được qua **HTTPS** (CloudFront + ACM).

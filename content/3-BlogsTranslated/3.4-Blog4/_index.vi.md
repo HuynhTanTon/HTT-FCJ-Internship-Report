@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 3.4. </b> "
 ---
 
-# Implement resource counters with Amazon DynamoDB
-
 #### 1. Thông tin nguồn
 
 | Hạng mục | Nội dung |

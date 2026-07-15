@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 2.5. </b> "
 ---
 
-# Lộ trình phát triển đề xuất
-
 | Mốc | Thời lượng gợi ý | Kết quả |
 | --- | --- | --- |
 | Tuần 1 | 3–5 ngày | CloudFront + ACM HTTPS cho UI; smoke test create/redirect |

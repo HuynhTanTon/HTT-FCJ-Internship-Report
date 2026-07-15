@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 2.6.3 </b> "
 ---
 
-# Khuyến nghị kiểm soát chi phí
-
 - Tạo **AWS Budget** (ví dụ ngưỡng $5 / $10) + email SNS.
 - Đặt **retention** CloudWatch Logs ngắn cho lab (7–14 ngày).
 - Sau demo: xoá / disable CloudFront, empty S3, xoá bảng DynamoDB nếu không cần.

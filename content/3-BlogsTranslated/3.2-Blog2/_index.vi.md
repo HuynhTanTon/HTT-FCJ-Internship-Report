@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 3.2. </b> "
 ---
 
-# Announcing AWS Lambda Function URLs
-
 #### 1. Thông tin nguồn
 
 | Hạng mục | Nội dung |

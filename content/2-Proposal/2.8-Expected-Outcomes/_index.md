@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 2.8. </b> "
 ---
 
-# Expected outcomes
-
 #### Technical success criteria
 
 - Frontend reachable over **HTTPS** (CloudFront + ACM).

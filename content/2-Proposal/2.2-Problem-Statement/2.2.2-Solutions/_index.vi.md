@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 2.2.2 </b> "
 ---
 
-# Đề xuất giải pháp phát triển
-
 1. **CloudFront + ACM** trước S3 (và tuỳ chọn trước Function URL) để có HTTPS, custom domain, cache asset tĩnh.
 2. **Siết truy cập S3**: chuyển dần sang OAC với CloudFront; giảm phụ thuộc Bucket Policy public.
 3. **Siết API**: cân nhắc Auth IAM / JWT / API key; WAF rate-based rule; thu hẹp CORS theo domain frontend thật.

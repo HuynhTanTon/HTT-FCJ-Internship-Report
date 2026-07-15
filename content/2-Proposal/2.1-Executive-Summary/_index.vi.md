@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 2.1. </b> "
 ---
 
-# Tóm tắt điều hành
-
 #### Hiện trạng dự án
 
 Dự án Serverless URL Shortener đã chứng minh khả năng triển khai end-to-end một ứng dụng rút gọn link trên AWS theo mô hình serverless: frontend tĩnh trên S3 Static Website Hosting, backend một hàm Lambda expose qua Function URL (tạo mã, redirect 302, stats), lưu mapping `shortCode` ↔ `originalUrl` và `clickCount` trên DynamoDB on-demand, kèm metric filter / CloudWatch Alarm / SNS khi log có `[ERROR]`.

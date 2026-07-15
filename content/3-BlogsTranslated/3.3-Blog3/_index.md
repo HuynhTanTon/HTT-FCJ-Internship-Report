@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 3.3. </b> "
 ---
 
-# Tutorial: Configuring a static website on Amazon S3
-
 #### 1. Source information
 
 | Item | Details |

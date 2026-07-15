@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 2.5. </b> "
 ---
 
-# Proposed development roadmap
-
 | Milestone | Suggested duration | Outcome |
 | --- | --- | --- |
 | Week 1 | 3–5 days | CloudFront + ACM HTTPS for UI; create/redirect smoke test |

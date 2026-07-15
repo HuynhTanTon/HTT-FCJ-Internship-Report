@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 2.4. </b> "
 ---
 
-# Kế hoạch triển khai đề xuất
-
 #### Giai đoạn ưu tiên
 
 | Giai đoạn | Việc chính | Kết quả kiểm chứng |

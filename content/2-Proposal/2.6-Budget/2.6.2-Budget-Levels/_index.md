@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 2.6.2 </b> "
 ---
 
-# Budget by expansion level
-
 | Level | Scope | Expected monthly cost (lab) |
 | --- | --- | --- |
 | M0 – Current | S3 + Lambda URL + DynamoDB + basic alarm | ~$0–2 (often Free Tier) |

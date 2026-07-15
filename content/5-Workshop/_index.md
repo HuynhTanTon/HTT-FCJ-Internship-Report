@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 5. </b> "
 ---
 
-# Serverless URL Shortener on AWS
-
 #### Overview
 
 Section 5 records how I deployed a **URL Shortener** in a fully **serverless** model on AWS. The goal was not only a working demo, but a clear understanding of how the pieces fit together: static frontend, business API, and low-latency key-value storage.

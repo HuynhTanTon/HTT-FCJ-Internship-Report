@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 2.2. </b> "
 ---
 
-# Problem statement
-
 #### Overview
 
 After the foundation phase, the project proved a serverless path from S3 frontend to Lambda Function URL and DynamoDB. However, the current scope mainly fits technical demonstration, lab practice, and reporting — not full long-running public Internet operations.

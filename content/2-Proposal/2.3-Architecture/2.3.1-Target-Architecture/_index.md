@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 2.3.1 </b> "
 ---
 
-# Target architecture direction
-
 ```text
 [ User ]
    │  HTTPS

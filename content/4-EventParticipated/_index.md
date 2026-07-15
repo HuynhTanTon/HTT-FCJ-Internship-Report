@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 4. </b> "
 ---
 
-# Events participated
-
 During the internship at First Cloud Journey – AWS FCJ HCM, I took part in academic / community events related to AWS and FCAJ. Below are the summaries and detailed write-ups.
 
 ### [Event 1](4.1-Event1/)

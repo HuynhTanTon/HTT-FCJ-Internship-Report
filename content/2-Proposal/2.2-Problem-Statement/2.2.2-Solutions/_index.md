@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 2.2.2 </b> "
 ---
 
-# Proposed future solutions
-
 1. **CloudFront + ACM** in front of S3 (and optionally Function URL) for HTTPS, custom domain, and static caching.
 2. **Tighten S3 access**: move toward OAC with CloudFront; reduce reliance on public Bucket Policies.
 3. **Tighten the API**: consider IAM / JWT / API key auth; WAF rate-based rules; narrow CORS to the real frontend domain.

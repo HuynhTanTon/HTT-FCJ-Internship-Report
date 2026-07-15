@@ -6,8 +6,6 @@ chapter: false
 pre: " <b> 2. </b> "
 ---
 
-# Project development proposal
-
 #### Context and purpose
 
 During the internship, the **Serverless URL Shortener** project completed its foundation phase: a static UI on **Amazon S3**, a backend on **AWS Lambda Function URL**, mapping storage in **Amazon DynamoDB**, plus basic error monitoring with **CloudWatch** (metric filter / alarm) and **SNS**.
