@@ -9,7 +9,7 @@ pre: " <b> 1. </b> "
 **Trong trang này**, tôi ghi lại nhật ký công việc theo từng tuần trong chương trình thực tập tại First Cloud Journey – AWS FCJ HCM.
 
 - **Sinh viên:** Huỳnh Tấn Tồn (MSSV: 2280603319)
-- **Thời gian:** 12 tuần (20/04/2026 – 12/07/2026)
+- **Thời gian:** 12 tuần (20/04/2026 – 26/07/2026)
 - **Cấu trúc:** Mỗi tuần gồm mục tiêu, bài lab thực hành, kết quả đạt được, khó khăn và kế hoạch tuần tiếp theo
 
 **Tuần 1:** [Làm quen với AWS Cloud & thiết lập tài khoản](1.1-week1/)

@@ -1,125 +1,94 @@
 ---
 title: "Event 1"
-date: 2024-01-01
+date: 2026-05-30
 weight: 1
 chapter: false
 pre: " <b> 4.1. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
+# Bài thu hoạch: Event 1
 
-# Bài thu hoạch “GenAI-powered App-DB Modernization workshop”
+### Thông tin sự kiện
 
-### Mục Đích Của Sự Kiện
+| Hạng mục | Nội dung |
+| --- | --- |
+| Tên sự kiện | **Event Meet up** (Saturday Meet up) |
+| Thời gian | **09:00 – 12:00** ngày **30/05/2026** |
+| Địa điểm | Tầng 26, tòa nhà Bitexco, số 02 đường Hải Triều, phường Sài Gòn, TP. Hồ Chí Minh |
+| Vai trò | **Người tham dự** |
+| Người chia sẻ | (1) Đội **The Ballers** · (2) **Huynh Thai Linh** |
 
-- Chia sẻ best practices trong thiết kế ứng dụng hiện đại
-- Giới thiệu phương pháp DDD và event-driven architecture
-- Hướng dẫn lựa chọn compute services phù hợp
-- Giới thiệu công cụ AI hỗ trợ development lifecycle
+![Thông tin Event Meet up](/images/4-EventParticipated/4.1-Event1/event-meetup.png)
 
-### Danh Sách Diễn Giả
+### Mục đích tham dự
 
-- **Jignesh Shah** - Director, Open Source Databases
-- **Erica Liu** - Sr. GTM Specialist, AppMod
-- **Fabrianne Effendi** - Assc. Specialist SA, Serverless Amazon Web Services
+Mình tham dự Event Meet up để:
 
-### Nội Dung Nổi Bật
+- Lắng nghe kinh nghiệm thực tế từ cộng đồng First Cloud Journey / AWS.
+- Học cách **trình bày và chia sẻ** ý tưởng, hành trình làm việc nhóm dưới áp lực.
+- Tiếp nhận **lộ trình học cloud thực tế** để áp dụng vào quá trình thực tập.
 
-#### Đưa ra các ảnh hưởng tiêu cực của kiến trúc ứng dụng cũ
+---
 
-- Thời gian release sản phẩm lâu → Mất doanh thu/bỏ lỡ cơ hội
-- Hoạt động kém hiệu quả → Mất năng suất, tốn kém chi phí
-- Không tuân thủ các quy định về bảo mật → Mất an ninh, uy tín
+### Phần chia sẻ 1 – Đội The Ballers
 
-#### Chuyển đổi sang kiến trúc ứng dụng mới - Microservice Architecture
+Đội **The Ballers** chia sẻ hành trình làm sản phẩm trong thời gian ngắn với giọng điệu vui nhưng chân thực: nhiều “fun”, nhiều **bug fixes**, mệt mỏi và thiếu ngủ — phản ánh đúng thực tế khi ship nhanh dưới deadline.
 
-Chuyển đổi thành hệ thống modular – từng chức năng là một **dịch vụ độc lập** giao tiếp với nhau qua **sự kiện** với 3 trụ cột cốt lõi:
+**Thành viên (theo slide):** Huynh An Khuong, Mai Quoc Anh, Nguyen Tran Minh Quan.
 
-- **Queue Management**: Xử lý tác vụ bất đồng bộ
-- **Caching Strategy:** Tối ưu performance
-- **Message Handling:** Giao tiếp linh hoạt giữa services
+Nội dung nổi bật từ phần chia sẻ:
 
-#### Domain-Driven Design (DDD)
+- Tinh thần thử nghiệm / học nhanh khi làm dự án.
+- Kinh nghiệm teamwork và giao tiếp dưới áp lực thời gian.
+- Kết nối với chương trình **First Cloud Journey | AI** và cộng đồng AWS.
 
-- **Phương pháp 4 bước**: Xác định domain events → sắp xếp timeline → identify actors → xác định bounded contexts
-- **Case study bookstore**: Minh họa cách áp dụng DDD thực tế
-- **Context mapping**: 7 patterns tích hợp bounded contexts
+![Phần chia sẻ của đội The Ballers](/images/4-EventParticipated/4.1-Event1/hackathon-the-ballers.png)
 
-#### Event-Driven Architecture
+---
 
-- **3 patterns tích hợp**: Publish/Subscribe, Point-to-point, Streaming
-- **Lợi ích**: Loose coupling, scalability, resilience
-- **So sánh sync vs async**: Hiểu rõ trade-offs (sự đánh đổi)
+### Phần chia sẻ 2 – Huynh Thai Linh: Effective Practical Learning Roadmap
 
-#### Compute Evolution
+**Huynh Thai Linh** chia sẻ về **Effective Practical Learning Roadmap** — lộ trình học cloud thực tiễn theo 3 giai đoạn:
 
-- **Shared Responsibility Model**: Từ EC2 → ECS → Fargate → Lambda
-- **Serverless benefits**: No server management, auto-scaling, pay-for-value
-- **Functions vs Containers**: Criteria lựa chọn phù hợp
+| Phase | Nội dung chính |
+| --- | --- |
+| **Phase 1 – Mind & Architecture** | Xây nền tư duy kiến trúc qua **AWS Cloud Quest** (Cloud Practitioner) |
+| **Phase 2 – Code & Fast Testing** | Thực hành code và kiểm thử nhanh với open-source **Floci** |
+| **Phase 3 – Real Deployment & Production** | Đưa lên môi trường thật trên **Real AWS** |
 
-#### Amazon Q Developer
+Slide kết thúc “Thank you!” kèm QR LinkedIn, giúp mình follow / network sau buổi chia sẻ.
 
-- **SDLC automation**: Từ planning đến maintenance
-- **Code transformation**: Java upgrade, .NET modernization
-- **AWS Transform agents**: VMware, Mainframe, .NET migration
+![Effective Practical Learning Roadmap](/images/4-EventParticipated/4.1-Event1/learning-roadmap.png)
 
-### Những Gì Học Được
+![Thank you – Huynh Thai Linh](/images/4-EventParticipated/4.1-Event1/thank-you-huynh-thai-linh.png)
 
-#### Tư Duy Thiết Kế
+---
 
-- **Business-first approach**: Luôn bắt đầu từ business domain, không phải technology
-- **Ubiquitous language**: Importance của common vocabulary giữa business và tech teams
-- **Bounded contexts**: Cách identify và manage complexity trong large systems
+### Những gì mình học được (vai trò người tham dự)
 
-#### Kiến Trúc Kỹ Thuật
+#### Soft skills & chia sẻ trải nghiệm (từ The Ballers)
 
-- **Event storming technique**: Phương pháp thực tế để mô hình hóa quy trình kinh doanh
-- Sử dụng **Event-driven communication** thay vì synchronous calls
-- **Integration patterns**: Hiểu khi nào dùng sync, async, pub/sub, streaming
-- **Compute spectrum**: Criteria chọn từ VM → containers → serverless
+- Chia sẻ trước đám đông cần **cấu trúc rõ**, truyền tải idea ngắn gọn, dễ hiểu.
+- Làm việc nhóm dưới deadline đòi hỏi chia việc rõ và giao tiếp liên tục.
 
-#### Chiến Lược Hiện Đại Hóa
+#### Lộ trình học thực tế (từ Huynh Thai Linh)
 
-- **Phased approach**: Không rush, phải có roadmap rõ ràng
-- **7Rs framework**: Nhiều con đường khác nhau tùy thuộc vào đặc điểm của mỗi ứng dụng
-- **ROI measurement**: Cost reduction + business agility
+- Học cloud nên đi theo thứ tự: **tư duy kiến trúc → code & test nhanh → deploy production**, tránh nhảy thẳng lên console mà thiếu nền.
+- Cloud Quest giúp “nắm mind” trước; Floci hỗ trợ iterate nhanh; cuối cùng mới là môi trường AWS thật.
+- Follow LinkedIn của Huynh Thai Linh để tiếp tục học hỏi sau sự kiện.
 
-### Ứng Dụng Vào Công Việc
+#### Góc nhìn cộng đồng FCAJ
 
-- **Áp dụng DDD** cho project hiện tại: Event storming sessions với business team
-- **Refactor microservices**: Sử dụng bounded contexts để identify service boundaries
-- **Implement event-driven patterns**: Thay thế một số sync calls bằng async messaging
-- **Serverless adoption**: Pilot AWS Lambda cho một số use cases phù hợp
-- **Try Amazon Q Developer**: Integrate vào development workflow để boost productivity
+- Buổi chia sẻ tại Bitexco kết hợp cả **kinh nghiệm làm dự án** và **lộ trình học** — rất phù hợp với intern đang làm workshop / báo cáo.
 
-### Trải nghiệm trong event
+### Ứng dụng vào quá trình thực tập
 
-Tham gia workshop **“GenAI-powered App-DB Modernization”** là một trải nghiệm rất bổ ích, giúp tôi có cái nhìn toàn diện về cách hiện đại hóa ứng dụng và cơ sở dữ liệu bằng các phương pháp và công cụ hiện đại. Một số trải nghiệm nổi bật:
+- Áp dụng 3 phase vào URL Shortener: nắm kiến trúc → code/test Lambda–DynamoDB–S3 → deploy và vận hành thật trên AWS.
+- Rèn cách trình bày kiến trúc ngắn gọn, đúng trọng tâm như các phần chia sẻ trong buổi.
+- Giữ tinh thần iterate nhanh khi hoàn thiện workshop và nội dung báo cáo.
 
-#### Học hỏi từ các diễn giả có chuyên môn cao
-- Các diễn giả đến từ AWS và các tổ chức công nghệ lớn đã chia sẻ **best practices** trong thiết kế ứng dụng hiện đại.
-- Qua các case study thực tế, tôi hiểu rõ hơn cách áp dụng **Domain-Driven Design (DDD)** và **Event-Driven Architecture** vào các project lớn.
+### Trải nghiệm cá nhân
 
-#### Trải nghiệm kỹ thuật thực tế
-- Tham gia các phiên trình bày về **event storming** giúp tôi hình dung cách **mô hình hóa quy trình kinh doanh** thành các domain events.
-- Học cách **phân tách microservices** và xác định **bounded contexts** để quản lý sự phức tạp của hệ thống lớn.
-- Hiểu rõ trade-offs giữa **synchronous và asynchronous communication** cũng như các pattern tích hợp như **pub/sub, point-to-point, streaming**.
+Là **người tham dự**, mình theo dõi hai phần chia sẻ liên tiếp tại tầng 26 Bitexco: một bên là trải nghiệm làm thật dưới áp lực, một bên là định hướng học có lộ trình. Hai góc nhìn bổ sung nhau và hữu ích cho định hướng thực tập FCAJ/AWS của mình.
 
-#### Ứng dụng công cụ hiện đại
-- Trực tiếp tìm hiểu về **Amazon Q Developer**, công cụ AI hỗ trợ SDLC từ lập kế hoạch đến maintenance.
-- Học cách **tự động hóa code transformation** và pilot serverless với **AWS Lambda**, từ đó nâng cao năng suất phát triển.
-
-#### Kết nối và trao đổi
-- Workshop tạo cơ hội trao đổi trực tiếp với các chuyên gia, đồng nghiệp và team business, giúp **nâng cao ngôn ngữ chung (ubiquitous language)** giữa business và tech.
-- Qua các ví dụ thực tế, tôi nhận ra tầm quan trọng của **business-first approach**, luôn bắt đầu từ nhu cầu kinh doanh thay vì chỉ tập trung vào công nghệ.
-
-#### Bài học rút ra
-- Việc áp dụng DDD và event-driven patterns giúp giảm **coupling**, tăng **scalability** và **resilience** cho hệ thống.
-- Chiến lược hiện đại hóa cần **phased approach** và đo lường **ROI**, không nên vội vàng chuyển đổi toàn bộ hệ thống.
-- Các công cụ AI như Amazon Q Developer có thể **boost productivity** nếu được tích hợp vào workflow phát triển hiện tại.
-
-#### Một số hình ảnh khi tham gia sự kiện
-* Thêm các hình ảnh của các bạn tại đây
-> Tổng thể, sự kiện không chỉ cung cấp kiến thức kỹ thuật mà còn giúp tôi thay đổi cách tư duy về thiết kế ứng dụng, hiện đại hóa hệ thống và phối hợp hiệu quả hơn giữa các team.
+> Tổng thể, buổi chia sẻ giúp mình vừa học cách truyền tải trải nghiệm, vừa có khung học cloud thực tế để áp dụng ngay vào dự án serverless và báo cáo thực tập.
