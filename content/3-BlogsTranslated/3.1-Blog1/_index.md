@@ -57,7 +57,7 @@ Useful because it matches the shortener problem while showing a different archit
 | Clicks / stats | Not the focus | Atomic `clickCount` + `/stats/{code}` |
 | Frontend | Admin HTML on S3 | Shortener UI on S3 + `config.js` |
 
-![Workshop architecture: Function URL + DynamoDB](/images/3-BlogsTranslated/3.1-Blog1/my-workshop-architecture.png)
+![Deployed workshop architecture: S3 + Function URL + DynamoDB + CloudWatch/SNS](/images/3-BlogsTranslated/3.1-Blog1/my-workshop-architecture.png)
 
 S3 redirects are lean for “shorten + redirect only.” When you need clicks, stats, conditional 404s, and centralized handler logging, Function URL + DynamoDB is more flexible. In the workshop I verified **302** with PowerShell and stored mappings in DynamoDB:
 

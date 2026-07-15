@@ -10,6 +10,12 @@ pre: " <b> 2.3. </b> "
 
 This section describes the target architecture after expansion, while keeping the S3 + Lambda + DynamoDB core already built in the workshop.
 
+#### Current architecture (baseline)
+
+![Current Serverless URL Shortener architecture](/images/2-Proposal/current-architecture.png)
+
+Baseline already in place: S3 Static Website → Lambda Function URL → DynamoDB, IAM least privilege, CloudWatch + SNS error alerts. Child sections propose HTTPS edge (CloudFront/WAF) and tighter security without replacing this core.
+
 #### Contents
 
 - [Target architecture direction](2.3.1-Target-Architecture/)

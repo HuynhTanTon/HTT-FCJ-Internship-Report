@@ -14,6 +14,8 @@ Section 5 records how I deployed a **URL Shortener** in a fully **serverless** m
 
 The architecture uses **Amazon S3** (Static Website Hosting) + **AWS Lambda Function URL** + **Amazon DynamoDB** in **ap-southeast-1 (Singapore)**. No EC2 and no API Gateway — Function URL is the public HTTPS API endpoint.
 
+![Serverless URL Shortener architecture](/images/5-Workshop/5.1-Tong-quan/architecture.png)
+
 #### Problem and approach
 
 The app needs three core operations:

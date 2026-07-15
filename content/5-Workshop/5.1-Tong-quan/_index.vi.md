@@ -10,27 +10,21 @@ pre: " 5.1. "
 
 Trình bày kiến trúc thực tế mình đã triển khai: các thành phần AWS, cách chúng gọi nhau, và ý nghĩa từng API trên Function URL.
 
-#### Sơ đồ kiến trúc logic
+#### Sơ đồ kiến trúc hệ thống
 
-```text
-[ Trình duyệt ]
-      │
-      │ 1) mở website endpoint
-      ▼
-[ S3 Static Website ]
-  index.html + config.js
-      │
-      │ 2) fetch POST /  { "url": "..." }
-      ▼
-[ Lambda Function URL ]  url-shortener-backend
-      │
-      │ 3) PutItem / UpdateItem / GetItem
-      ▼
-[ DynamoDB ]  url-shortener-links
-   PK: shortCode (S)
-```
+Kiến trúc đã triển khai tại region **ap-southeast-1**: S3 (Static Website) + Lambda Function URL (Node.js) + DynamoDB (URL mapping) + IAM Least Privilege, kèm CloudWatch / SNS cảnh báo lỗi.
 
-Khi người dùng bấm link ngắn, trình duyệt gọi thẳng Function URL (`GET /{shortCode}`); Lambda trả **302** kèm header `Location` trỏ về `originalUrl`. Frontend S3 không tham gia bước redirect này.
+![Kiến trúc Serverless URL Shortener](/images/5-Workshop/5.1-Tong-quan/architecture.png)
+
+**Luồng chính trên sơ đồ:**
+
+1. Người dùng truy cập website trên S3.
+2. Frontend gọi API qua Lambda Function URL.
+3. Lambda đọc/ghi bảng mapping trên DynamoDB (Assume Role IAM).
+4. Lambda trả response (JSON tạo link hoặc HTTP 302 redirect).
+5. Log/metric lỗi → CloudWatch Alarm → SNS → email admin khi vượt ngưỡng.
+
+Khi mở link ngắn, trình duyệt gọi thẳng Function URL (`GET /{shortCode}`); Lambda trả **302** kèm `Location` tới `originalUrl`. Frontend S3 không tham gia bước redirect này.
 
 #### Luồng API đã thiết kế
 

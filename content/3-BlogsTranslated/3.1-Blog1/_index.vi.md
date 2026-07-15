@@ -57,7 +57,7 @@ Bài viết rất hữu ích vì đúng chủ đề URL shortener serverless, đ
 | Đếm click / stats | Không phải trọng tâm | `clickCount` atomic + `/stats/{code}` |
 | Frontend | Admin HTML trên S3 | UI rút gọn trên S3 + `config.js` |
 
-![Kiến trúc workshop: Function URL + DynamoDB](/images/3-BlogsTranslated/3.1-Blog1/my-workshop-architecture.png)
+![Kiến trúc workshop đã triển khai: S3 + Function URL + DynamoDB + CloudWatch/SNS](/images/3-BlogsTranslated/3.1-Blog1/my-workshop-architecture.png)
 
 Mô hình S3 redirect của AWS **rẻ và gọn** khi chỉ cần rút gọn + chuyển hướng. Khi cần nghiệp vụ thêm (đếm click, stats, 404 có điều kiện, log lỗi tập trung trong handler), lớp API tập trung như Function URL + DynamoDB linh hoạt hơn. Trong workshop, mình xác nhận redirect bằng status **302** trên PowerShell và lưu mapping trên bảng DynamoDB:
 

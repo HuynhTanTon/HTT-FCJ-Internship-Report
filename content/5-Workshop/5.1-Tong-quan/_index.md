@@ -10,27 +10,21 @@ pre: " 5.1. "
 
 Describe the architecture I actually deployed: AWS components, how they call each other, and what each Function URL API does.
 
-#### Logical architecture
+#### System architecture diagram
 
-```text
-[ Browser ]
-      │
-      │ 1) open website endpoint
-      ▼
-[ S3 Static Website ]
-  index.html + config.js
-      │
-      │ 2) fetch POST /  { "url": "..." }
-      ▼
-[ Lambda Function URL ]  url-shortener-backend
-      │
-      │ 3) PutItem / UpdateItem / GetItem
-      ▼
-[ DynamoDB ]  url-shortener-links
-   PK: shortCode (S)
-```
+Architecture deployed in **ap-southeast-1**: S3 (Static Website) + Lambda Function URL (Node.js) + DynamoDB (URL mapping) + IAM Least Privilege, plus CloudWatch / SNS error alerts.
 
-When a user opens a short link, the browser calls the Function URL directly (`GET /{shortCode}`); Lambda returns **302** with `Location` set to `originalUrl`. The S3 frontend is not involved in that redirect step.
+![Serverless URL Shortener architecture](/images/5-Workshop/5.1-Tong-quan/architecture.png)
+
+**Main flows on the diagram:**
+
+1. User opens the S3-hosted website.
+2. Frontend calls the API via Lambda Function URL.
+3. Lambda reads/writes the DynamoDB mapping table (assuming an IAM role).
+4. Lambda returns a response (create JSON or HTTP 302 redirect).
+5. Error logs/metrics → CloudWatch Alarm → SNS → admin email when the threshold is crossed.
+
+When opening a short link, the browser calls the Function URL directly (`GET /{shortCode}`); Lambda returns **302** with `Location` to `originalUrl`. The S3 frontend is not involved in that redirect step.
 
 #### API design
 
