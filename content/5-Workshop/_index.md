@@ -10,7 +10,7 @@ pre: " <b> 5. </b> "
 
 Section 5 records how I deployed a **URL Shortener** in a fully **serverless** model on AWS. The goal was not only a working demo, but a clear understanding of how the pieces fit together: static frontend, business API, and low-latency key-value storage.
 
-The architecture uses **Amazon S3** (Static Website Hosting) + **AWS Lambda Function URL** + **Amazon DynamoDB** in **ap-southeast-1 (Singapore)**. No EC2 and no API Gateway — Function URL is the public HTTPS API endpoint.
+The architecture uses **Amazon S3** (Static Website Hosting) + **AWS Lambda Function URL** + **Amazon DynamoDB** in **ap-southeast-1 (Singapore)**. No EC2 and no API Gateway — Function URL is the public HTTPS API endpoint. Error monitoring uses **CloudWatch + SNS**.
 
 ![Serverless URL Shortener architecture](/images/5-Workshop/5.1-Tong-quan/architecture.png)
 
@@ -30,7 +30,7 @@ For this lab, Function URL + on-demand DynamoDB is enough: fast to deploy, low p
 | --- | ---------- | ------- |
 | Frontend | S3 bucket `url-shortener-frontend-forward` | Serves UI (`index.html`, `config.js`) |
 | Backend | Lambda `url-shortener-backend` + Function URL | Create, redirect, stats |
-| Data | DynamoDB `url-shortener-links` | Stores `shortCode` ↔ `originalUrl`, `clickCount` |
+| Data | DynamoDB `url-shortener-links` (+ TTL `expiresAt`) | Stores `shortCode` ↔ `originalUrl`, `clickCount` |
 | IAM | Role + DynamoDB policy | Least privilege for Lambda |
 | Monitoring | CloudWatch metric filter + Alarm + SNS | Alerts on `[ERROR]` logs |
 
@@ -38,7 +38,6 @@ For this lab, Function URL + on-demand DynamoDB is enough: fast to deploy, low p
 
 1. [Architecture overview](5.1-Tong-quan/) — request flow and service choices.
 2. [Prerequisites](5.2-Chuan-bi/) — DynamoDB table and IAM role/policy.
-3. [Deploy Backend](5.3-Backend/) — Lambda, Function URL, API tests.
+3. [Deploy Backend](5.3-Backend/) — Lambda, Function URL, API tests, CloudWatch/SNS monitoring.
 4. [Deploy Frontend](5.4-Frontend/) — S3 hosting, Bucket Policy, upload, e2e.
-5. [Advanced](5.5-Nang-cao/) — atomic click counting and CloudWatch alerts.
-6. [Clean up](5.6-Don-dep/) — tear down resources after the demo.
+5. [Clean up](5.5-Don-dep/) — tear down resources after the demo.

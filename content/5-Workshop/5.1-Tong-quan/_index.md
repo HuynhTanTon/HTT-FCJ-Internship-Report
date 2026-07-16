@@ -6,50 +6,59 @@ chapter: false
 pre: " 5.1. "
 ---
 
-#### Goal of this section
+#### Goal
 
-Describe the architecture I actually deployed: AWS components, how they call each other, and what each Function URL API does.
+Present the architecture I actually deployed: AWS components, how they call each other, and each Function URL API.
 
 #### System architecture diagram
 
-Architecture deployed in **ap-southeast-1**: S3 (Static Website) + Lambda Function URL (Node.js) + DynamoDB (URL mapping) + IAM Least Privilege, plus CloudWatch / SNS error alerts.
+Deployed in **ap-southeast-1**: S3 (Static Website) + Lambda Function URL (Node.js) + DynamoDB (`url-shortener-links`, TTL) + IAM least privilege, plus CloudWatch / SNS error alerts.
 
 ![Serverless URL Shortener architecture](/images/5-Workshop/5.1-Tong-quan/architecture.png)
 
-**Main flows on the diagram:**
+**Main flow on the diagram:**
 
-1. User opens the S3-hosted website.
-2. Frontend calls the API via Lambda Function URL.
-3. Lambda reads/writes the DynamoDB mapping table (assuming an IAM role).
-4. Lambda returns a response (create JSON or HTTP 302 redirect).
-5. Error logs/metrics → CloudWatch Alarm → SNS → admin email when the threshold is crossed.
+1. User loads the static page from **S3 Static Website Hosting** (HTML/CSS/JS).
+2. Browser calls the **Lambda Function URL** directly (`POST /`, `GET /{code}`, `GET /stats/{code}`).
+3. Lambda reads/writes DynamoDB (`PutItem` / `UpdateItem` / `GetItem`) via a least-privilege IAM role.
+4. DynamoDB returns data; Lambda prepares short URL, **302 redirect**, or stats.
+5. Response back to the browser.
+6–7. Logs/metrics → **CloudWatch** (metric filter `[ERROR]`, alarm) → **SNS** → admin email when thresholds are crossed.
 
-When opening a short link, the browser calls the Function URL directly (`GET /{shortCode}`); Lambda returns **302** with `Location` to `originalUrl`. The S3 frontend is not involved in that redirect step.
+When opening a short link, the browser calls Function URL (`GET /{shortCode}`) directly; Lambda returns **302** with `Location: originalUrl`. The S3 frontend is not involved in redirect.
 
-#### API design
+#### Designed API flow
 
 | Method & path | Purpose | DynamoDB write | Affects clicks |
 | ------------- | -------- | ------------ | --------------- |
-| `POST /` | Create short link | `PutItem` | No |
-| `GET /{shortCode}` | Redirect to original URL | `UpdateItem` (increment `clickCount`) | Yes |
-| `GET /stats/{shortCode}` | Read stats | read path | No |
+| `POST /` | Create short link | `PutItem` (+ `expiresAt` TTL) | No |
+| `GET /{shortCode}` | Redirect to original URL | `UpdateItem` (`clickCount`, `lastClickedAt`) | Yes |
+| `GET /stats/{shortCode}` | View stats | read | No |
 
-Create flow: S3 UI → `config.js` Function URL → `POST /` → store item → return `{ shortCode, shortUrl, originalUrl }`.
+Create flow:
 
-Redirect flow: `GET /{shortCode}` → atomic click update if code exists (else 404) → **302** to `originalUrl`.
+1. User opens the S3 website and pastes a long URL.
+2. `index.html` reads Function URL from `config.js` and calls `POST /` with `{ "url": "..." }`.
+3. Lambda generates a 6-character `shortCode`, stores the item in DynamoDB, returns `{ shortCode, shortUrl, originalUrl }`.
+
+Short-link open flow:
+
+1. Client calls `GET /{shortCode}` on the Function URL.
+2. Lambda atomically updates `clickCount` if the code exists; otherwise **404**.
+3. Returns **302** to `originalUrl`.
 
 #### Why Function URL instead of API Gateway
 
-- One simple HTTPS API with Auth `NONE` + CORS is enough for the lab.
-- Fewer resources to configure and clean up.
-- Lower cost/complexity for an internship demo.
+- The lab only needs a simple HTTPS API; Auth `NONE` + CORS is enough.
+- Fewer resources to configure and clean up (no API Gateway stages/methods/integrations).
+- Lower cost and complexity for an internal demo / internship report.
 
-Trade-off: Function URL has fewer management features than API Gateway (advanced throttling, API keys, usage plans). Acceptable for this shortener lab.
+Trade-off: Function URL has fewer governance features than API Gateway (advanced throttling, API keys, usage plans). Acceptable for this shortener lab.
 
 #### Why DynamoDB
 
-The core problem is **lookup by key** `shortCode` → `originalUrl`. On-demand DynamoDB fits: no capacity guessing, low latency, no RDS-style instance ops.
+The core problem is **key lookup** `shortCode` → `originalUrl`. On-demand DynamoDB fits: no capacity planning, low latency, no RDS instance ops. TTL via `expiresAt` lets items expire after the lab/demo window.
 
-#### Outcome
+#### Architecture outcome
 
-With all three layers up, the closed loop works: create on S3 UI → store in DynamoDB → open short URL via Lambda → redirect + count clicks → inspect stats / table items.
+With all layers in place, the path is closed: create on S3 UI → store in DynamoDB → open short URL via Lambda → redirect + click count → stats / console inspection, plus CloudWatch → SNS monitoring.

@@ -13,7 +13,7 @@ pre: " <b> 3.5. </b> "
 | Tiêu đề gốc | How to get notified on specific Lambda function error patterns using CloudWatch |
 | Nguồn | [AWS Cloud Operations Blog](https://aws.amazon.com/blogs/mt/get-notified-specific-lambda-function-error-patterns-using-cloudwatch/) |
 | Chủ đề | CloudWatch Logs filter / subscription, Lambda Errors metric, SNS notification |
-| Liên hệ workshop | Mục 5.5 — metric filter `"[ERROR]"` + alarm + SNS |
+| Liên hệ workshop | Mục 5.3.3 — metric filter `"[ERROR]"` + alarm + SNS |
 
 #### 2. Tóm tắt nội dung
 
@@ -40,7 +40,7 @@ Có thể dùng mô hình này làm nền cho reactive automation (ticket, remed
 
 #### 4. Nhận xét
 
-Ở mục 5.5 mình triển khai biến thể cùng mục tiêu “log lỗi → cảnh báo”:
+Ở mục 5.3.3 mình triển khai biến thể cùng mục tiêu “log lỗi → cảnh báo”:
 
 1. Metric filter trên `/aws/lambda/url-shortener-backend` với pattern `"[ERROR]"`.
 2. Metric `URLShortenerErrorCount` + Alarm `url-shortener-error-alarm`.

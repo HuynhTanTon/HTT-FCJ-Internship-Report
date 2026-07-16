@@ -28,7 +28,7 @@ Response mẫu khi thành công:
 }
 ```
 
-Sau khi gắn frontend, thao tác tương đương trên UI cũng cho kết quả short URL cùng dạng Function URL + mã ngắn:
+Sau khi gắn frontend, thao tác tương đương trên UI cũng cho kết quả short URL cùng dạng Function URL + mã ngắn (có thể dùng mã tuỳ chỉnh, ví dụ `awss`):
 
 ![Kết quả tạo link ngắn trên giao diện](/images/5-Workshop/5.3-Backend/frontend-shorten-result.png)
 

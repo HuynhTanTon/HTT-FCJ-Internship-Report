@@ -8,29 +8,31 @@ pre: " 5.4.3. "
 
 #### Objects uploaded
 
-On the **Objects** tab of `url-shortener-frontend-forward`, I uploaded:
+On the **Objects** tab of `url-shortener-frontend-forward`, I uploaded 3 files (Upload succeeded, ~3.1 MB total):
 
-| File | Role |
-| ---- | ------- |
-| `index.html` | UI to paste long URLs, call the API, show `shortUrl` |
-| `config.js` | Declares the real Lambda Function URL |
-| `forest-anime-bg.png` | UI background image |
+| File | Type | Role |
+| ---- | ---- | ------- |
+| `index.html` | `text/html` | UI to paste long URLs, call the API, show `shortUrl` |
+| `config.js` | `text/javascript` | Declares `LAMBDA_URL` / the real Lambda Function URL |
+| `forest-anime-bg.png` | `image/png` | UI background image |
 
-![upload-files](/images/5-Workshop/5.4-Frontend/upload-files.png)
+![Upload succeeded — index.html, config.js, forest-anime-bg.png](/images/5-Workshop/5.4-Frontend/upload-files.png)
 
 #### Role of `config.js`
 
 Instead of hard-coding the Function URL in HTML, I split config into `config.js` so I can change the Lambda endpoint without rewriting UI logic, and keep the config visible for the report on S3.
 
-Example shape:
+`config.js` points to the Function URL copied in section 5.3.1:
 
 ```javascript
 window.APP_CONFIG = {
-  apiBaseUrl: "https://xxxx.lambda-url.ap-southeast-1.on.aws"
+  LAMBDA_URL: "https://xxxx.lambda-url.ap-southeast-1.on.aws"
 };
 ```
 
-(`index.html` uses this value for `fetch` `POST /`.)
+![config.js pointing to Lambda Function URL](/images/5-Workshop/5.4-Frontend/config-js.png)
+
+(`index.html` uses `window.APP_CONFIG.LAMBDA_URL` for `fetch` `POST /`.)
 
 #### Content-Type
 

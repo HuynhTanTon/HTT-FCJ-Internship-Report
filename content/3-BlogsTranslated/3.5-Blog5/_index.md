@@ -13,7 +13,7 @@ pre: " <b> 3.5. </b> "
 | Original title | How to get notified on specific Lambda function error patterns using CloudWatch |
 | Source | [AWS Cloud Operations Blog](https://aws.amazon.com/blogs/mt/get-notified-specific-lambda-function-error-patterns-using-cloudwatch/) |
 | Topics | CloudWatch Logs filters / subscriptions, Lambda Errors metric, SNS notifications |
-| Workshop link | Section 5.5 — metric filter `"[ERROR]"` + alarm + SNS |
+| Workshop link | Section 5.3.3 — metric filter `"[ERROR]"` + alarm + SNS |
 
 #### 2. Summary
 
@@ -40,7 +40,7 @@ The same pattern can drive reactive automation (tickets, remediators), not only 
 
 #### 4. Reflection
 
-In section 5.5 I implemented a related “log error → alert” path:
+In section 5.3.3 I implemented a related “log error → alert” path:
 
 1. Metric filter on `/aws/lambda/url-shortener-backend` with pattern `"[ERROR]"`.
 2. Metric `URLShortenerErrorCount` + Alarm `url-shortener-error-alarm`.

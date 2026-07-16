@@ -18,8 +18,10 @@ Chuẩn bị trước các tài nguyên nền (bảng dữ liệu + quyền IAM)
 | DynamoDB table | `url-shortener-links` |
 | Partition key | `shortCode` (String) |
 | Capacity mode | On-demand |
+| TTL attribute | `expiresAt` (bật Time to Live) |
 | Lambda function | `url-shortener-backend` |
-| IAM Role | `url-shortener-lambda-role` (hoặc role execution được gắn lúc tạo function) |
+| IAM Role | `url-shortener-lambda-role` |
+| Inline policy | `url-shortener-dynamodb-policy` |
 | S3 bucket | `url-shortener-frontend-forward` |
 
 #### DynamoDB table
@@ -30,18 +32,30 @@ Mình tạo bảng `url-shortener-links` với:
 - **Không dùng sort key** — mỗi `shortCode` là một item độc lập.
 - **On-demand** — phù hợp traffic lab thất thường, không phải ước lượng RCU/WCU trước.
 
-Các thuộc tính khác (`originalUrl`, `clickCount`, `createdAt`) được ghi khi Put/Update item; DynamoDB không bắt buộc khai báo trước như schema quan hệ.
+Sau khi tạo xong, bảng ở trạng thái **Active** (region `ap-southeast-1`).
 
-![create-table](/images/5-Workshop/5.2-Chuan-bi/create-table.png)
+![Bảng url-shortener-links đã tạo thành công](/images/5-Workshop/5.2-Chuan-bi/create-table.png)
+
+Các thuộc tính khác (`originalUrl`, `clickCount`, `createdAt`, `expiresAt`) được ghi khi Put/Update item; DynamoDB không bắt buộc khai báo trước như schema quan hệ.
+
+#### Time to Live (TTL)
+
+Mình bật **Time to Live** trên bảng với attribute **`expiresAt`** để item hết hạn có thể bị DynamoDB xóa tự động theo epoch time — hữu ích nếu muốn short link tự hết hạn sau lab / demo, tránh bảng phình vô hạn.
+
+![Đã bật TTL với attribute expiresAt](/images/5-Workshop/5.2-Chuan-bi/ttl-settings.png)
 
 #### IAM Role cho Lambda
 
-Role execution của Lambda được gắn tối thiểu hai lớp quyền:
+Mình tạo role **`url-shortener-lambda-role`** với trusted entity **AWS Lambda**, dùng làm execution role cho function backend.
+
+![Role url-shortener-lambda-role đã tạo](/images/5-Workshop/5.2-Chuan-bi/iam-role-created.png)
+
+Role được gắn tối thiểu hai lớp quyền:
 
 1. `AWSLambdaBasicExecutionRole` (AWS managed) — ghi log ra CloudWatch Logs.
-2. Policy DynamoDB (customer inline / customer managed) — chỉ các action cần thiết trên đúng ARN bảng.
+2. `url-shortener-dynamodb-policy` (customer inline) — chỉ các action cần thiết trên đúng ARN bảng `url-shortener-links`.
 
-![iam-role](/images/5-Workshop/5.2-Chuan-bi/iam-role.png)
+![Permissions của url-shortener-lambda-role](/images/5-Workshop/5.2-Chuan-bi/iam-role.png)
 
 Nội dung policy DynamoDB mình dùng (thay `<ACCOUNT_ID>` bằng account thật):
 

@@ -28,7 +28,7 @@ Sample success response:
 }
 ```
 
-After the frontend was wired, the UI produced the same Function URL + short-code shape:
+After the frontend was wired, the UI produced the same Function URL + short-code shape (optional custom code, e.g. `awss`):
 
 ![Short link result in the UI](/images/5-Workshop/5.3-Backend/frontend-shorten-result.png)
 

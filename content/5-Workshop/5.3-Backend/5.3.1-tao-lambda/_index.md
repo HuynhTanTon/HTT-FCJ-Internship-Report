@@ -20,14 +20,16 @@ pre: " 5.3.1. "
 
 I chose Node.js 20 because the Lambda runtime already includes AWS SDK v3 (`@aws-sdk/client-dynamodb`, `@aws-sdk/lib-dynamodb`) — paste code in the console and run, with no `node_modules` packaging for this lab.
 
-![lambda](/images/5-Workshop/5.3-Backend/create-lambda.png)
+Function **`url-shortener-backend`** uses handler file `index.mjs`. In the code editor I wired the DynamoDB Document Client, `generateShortCode()` (~6 characters), and `isValidUrl()` (only `http`/`https`), then **Deploy** to update the function.
+
+![Lambda url-shortener-backend code (index.mjs)](/images/5-Workshop/5.3-Backend/create-lambda.png)
 
 #### Core handler logic
 
 **1) Create — `POST /`**
 
-- Parse JSON body for `url`.
-- Generate a ~6-character random `shortCode`.
+- Parse JSON body for `url` and validate with `isValidUrl`.
+- Generate a ~6-character random `shortCode` via `generateShortCode`.
 - `PutCommand` into `TABLE_NAME` with `shortCode`, `originalUrl`, `clickCount: 0`, `createdAt`.
 - Return `{ shortCode, shortUrl, originalUrl }` where `shortUrl = functionUrl + "/" + shortCode`.
 
@@ -48,9 +50,11 @@ I chose Node.js 20 because the Lambda runtime already includes AWS SDK v3 (`@aws
 
 #### Function URL
 
-After enabling Function URL, I copied an endpoint like:
+After enabling Function URL (Auth type **NONE**, Invoke mode **BUFFERED**), I set CORS Allow origin `*`, Allow headers `content-type`, Allow methods `GET` / `POST`, then copied an endpoint like:
 
 `https://xxxx.lambda-url.ap-southeast-1.on.aws/`
+
+![Function URL + CORS for url-shortener-backend](/images/5-Workshop/5.3-Backend/function-url.png)
 
 That value goes into frontend `config.js` (section 5.4). Auth `NONE` fits a public lab shortener; production should add auth, rate limits, or CloudFront in front.
 

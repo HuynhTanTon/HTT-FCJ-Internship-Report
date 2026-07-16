@@ -26,4 +26,4 @@ Tóm tắt các pattern đếm tài nguyên trên DynamoDB (atomic counter, Cond
 
 ### [Blog 5 – How to get notified on specific Lambda function error patterns using CloudWatch](3.5-Blog5/)
 
-Tóm tắt cách nhận cảnh báo theo pattern lỗi trong log Lambda qua CloudWatch / SNS — liên hệ metric filter + alarm ở mục 5.5.
+Tóm tắt cách nhận cảnh báo theo pattern lỗi trong log Lambda qua CloudWatch / SNS — liên hệ metric filter + alarm ở mục 5.3.3.

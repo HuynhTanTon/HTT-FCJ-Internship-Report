@@ -27,7 +27,9 @@ Static Website Hosting only turns on website serving. For the browser to load `i
 }
 ```
 
-Path: S3 → bucket → **Permissions** → adjust Block Public Access as prompted → **Bucket policy** → Edit → Save.
+Path: S3 → bucket → **Permissions** → turn **Block all public access** Off → **Bucket policy** → Edit → Save. Console then shows *Successfully edited bucket policy*.
+
+![Bucket policy PublicReadGetObject on url-shortener-frontend-forward](/images/5-Workshop/5.4-Frontend/bucket-policy.png)
 
 #### Security meaning in this lab
 

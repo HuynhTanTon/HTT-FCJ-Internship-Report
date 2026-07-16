@@ -1,9 +1,9 @@
 ---
 title: "Clean up resources"
 date: 2026-07-14
-weight: 6
+weight: 5
 chapter: false
-pre: " 5.6. "
+pre: " 5.5. "
 ---
 
 #### Summary of what was completed
@@ -35,9 +35,9 @@ To avoid cost and leftover public endpoints, related resources should be removed
 2. DynamoDB table `url-shortener-links`.
 3. Empty + delete bucket `url-shortener-frontend-forward`.
 4. IAM role attached to Lambda (for example deleted role `url-shortener-backend-role-...`) and its DynamoDB policy.
-5. CloudWatch Alarm `url-shortener-error-alarm`, metric filter, log group `/aws/lambda/url-shortener-backend` (if no longer needed).
-6. SNS topic / email subscription used for the alarm.
+5. CloudWatch Alarm `URLShortener-Errors` (and Throttles/Duration if present), metric filter, log group `/aws/lambda/url-shortener-backend` (if no longer needed).
+6. SNS topic `url-shortener-alerts` / email subscription used for the alarm.
 
-![cleanup](/images/5-Workshop/5.6-Don-dep/cleanup.png)
+![cleanup](/images/5-Workshop/5.5-Don-dep/cleanup.png)
 
 The screenshot records deleting the IAM role after removing the function — part of the real cleanup on the account.

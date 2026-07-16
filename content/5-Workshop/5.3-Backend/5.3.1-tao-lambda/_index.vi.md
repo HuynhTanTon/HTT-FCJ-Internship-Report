@@ -20,7 +20,9 @@ pre: " 5.3.1. "
 
 Mình chọn Node.js 20 vì runtime Lambda đã có sẵn AWS SDK v3 (`@aws-sdk/client-dynamodb`, `@aws-sdk/lib-dynamodb`) — paste code trên console là chạy, không cần đóng gói `node_modules` cho lab này.
 
-![lambda](/images/5-Workshop/5.3-Backend/create-lambda.png)
+Function **`url-shortener-backend`** dùng file handler `index.mjs`. Trong code editor, mình triển khai client DynamoDB Document Client, hàm `generateShortCode()` (mã ~6 ký tự) và `isValidUrl()` (chỉ chấp nhận `http`/`https`), rồi **Deploy** để cập nhật function.
+
+![Code Lambda url-shortener-backend (index.mjs)](/images/5-Workshop/5.3-Backend/create-lambda.png)
 
 #### Logic cốt lõi trong handler
 
@@ -28,8 +30,8 @@ Phần lõi mình triển khai có thể tóm tắt như sau (đã rút gọn so
 
 **1) Tạo short link — `POST /`**
 
-- Parse body JSON, lấy `url`.
-- Sinh `shortCode` ngẫu nhiên ~6 ký tự (a–zA–Z0–9).
+- Parse body JSON, lấy `url` và kiểm tra bằng `isValidUrl`.
+- Sinh `shortCode` ngẫu nhiên ~6 ký tự (a–zA–Z0–9) qua `generateShortCode`.
 - `PutCommand` vào bảng `TABLE_NAME` với `shortCode`, `originalUrl`, `clickCount: 0`, `createdAt`.
 - Trả JSON `{ shortCode, shortUrl, originalUrl }` trong đó `shortUrl = functionUrl + "/" + shortCode`.
 
@@ -50,9 +52,11 @@ Phần lõi mình triển khai có thể tóm tắt như sau (đã rút gọn so
 
 #### Function URL
 
-Sau khi bật Function URL, mình copy endpoint dạng:
+Sau khi bật Function URL (Auth type **NONE**, Invoke mode **BUFFERED**), mình cấu hình CORS Allow origin `*`, Allow headers `content-type`, Allow methods `GET` / `POST`, rồi copy endpoint dạng:
 
 `https://xxxx.lambda-url.ap-southeast-1.on.aws/`
+
+![Function URL + CORS của url-shortener-backend](/images/5-Workshop/5.3-Backend/function-url.png)
 
 Endpoint này được ghi vào `config.js` của frontend (mục 5.4). Auth `NONE` phù hợp API rút gọn link công khai trong lab; môi trường production nên cân nhắc auth, rate limit hoặc đặt CloudFront phía trước.
 

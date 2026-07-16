@@ -13,7 +13,7 @@ pre: " <b> 3.4. </b> "
 | Original title | Implement resource counters with Amazon DynamoDB |
 | Source | [AWS Database Blog](https://aws.amazon.com/blogs/database/implement-resource-counters-with-amazon-dynamodb/) |
 | Topics | Atomic counters, UpdateItem, ConditionExpression, concurrency accuracy, retries |
-| Workshop link | Sections 5.3 / 5.5 — incrementing `clickCount` on redirect |
+| Workshop link | Section 5.3 — incrementing `clickCount` on redirect |
 
 #### 2. Summary
 

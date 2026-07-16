@@ -27,7 +27,9 @@ Static Website Hosting chỉ “bật công tắc phục vụ website”. Để 
 }
 ```
 
-Thao tác: S3 → bucket → **Permissions** → tắt Block Public Access ở mức cho phép public policy (theo hướng dẫn console khi Save) → **Bucket policy** → Edit → Save.
+Thao tác: S3 → bucket → **Permissions** → tắt **Block all public access** (Off) → **Bucket policy** → Edit → Save. Sau khi lưu, console báo *Successfully edited bucket policy*.
+
+![Bucket policy PublicReadGetObject trên url-shortener-frontend-forward](/images/5-Workshop/5.4-Frontend/bucket-policy.png)
 
 #### Ý nghĩa bảo mật trong phạm vi lab
 

@@ -26,4 +26,4 @@ Summary of DynamoDB resource-counter patterns (atomic counters, ConditionExpress
 
 ### [Blog 5 – How to get notified on specific Lambda function error patterns using CloudWatch](3.5-Blog5/)
 
-Summary of alerting on Lambda log error patterns via CloudWatch / SNS — related to the metric filter + alarm in section 5.5.
+Summary of alerting on Lambda log error patterns via CloudWatch / SNS — related to the metric filter + alarm in section 5.3.3.

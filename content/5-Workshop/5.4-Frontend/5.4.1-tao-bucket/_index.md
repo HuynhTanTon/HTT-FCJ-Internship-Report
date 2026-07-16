@@ -8,13 +8,13 @@ pre: " 5.4.1. "
 
 #### What I configured
 
-I created bucket **`url-shortener-frontend-forward`** in **Asia Pacific (Singapore) `ap-southeast-1`**, then enabled **Static website hosting** (Bucket hosting) with default document `index.html`.
+I created bucket **`url-shortener-frontend-forward`** in **Asia Pacific (Singapore) `ap-southeast-1`**. After creation, the console shows *Successfully created bucket* and the Objects tab is empty (0 objects) — ready for frontend upload.
 
-Website endpoint used for the UI:
+![url-shortener-frontend-forward bucket created successfully](/images/5-Workshop/5.4-Frontend/create-bucket.png)
+
+Then I enabled **Static website hosting** (Bucket hosting) with default document `index.html`. Website endpoint used for the UI:
 
 `http://url-shortener-frontend-forward.s3-website-ap-southeast-1.amazonaws.com`
-
-![create-bucket](/images/5-Workshop/5.4-Frontend/create-bucket.png)
 
 #### Why the S3 website endpoint
 

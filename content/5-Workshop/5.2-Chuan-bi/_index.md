@@ -18,8 +18,10 @@ Prepare the foundation (data table + IAM permissions) so Lambda only needs to at
 | DynamoDB table | `url-shortener-links` |
 | Partition key | `shortCode` (String) |
 | Capacity mode | On-demand |
+| TTL attribute | `expiresAt` (Time to Live enabled) |
 | Lambda function | `url-shortener-backend` |
-| IAM Role | `url-shortener-lambda-role` (or the execution role attached at create time) |
+| IAM Role | `url-shortener-lambda-role` |
+| Inline policy | `url-shortener-dynamodb-policy` |
 | S3 bucket | `url-shortener-frontend-forward` |
 
 #### DynamoDB table
@@ -30,18 +32,30 @@ I created `url-shortener-links` with:
 - **No sort key** — each `shortCode` is one independent item.
 - **On-demand** — fits lab traffic without sizing RCU/WCU upfront.
 
-Attributes like `originalUrl`, `clickCount`, and `createdAt` are written on Put/Update; DynamoDB does not require a relational-style schema declaration first.
+After creation, the table status is **Active** in `ap-southeast-1`.
 
-![create-table](/images/5-Workshop/5.2-Chuan-bi/create-table.png)
+![url-shortener-links table created successfully](/images/5-Workshop/5.2-Chuan-bi/create-table.png)
+
+Attributes like `originalUrl`, `clickCount`, `createdAt`, and `expiresAt` are written on Put/Update; DynamoDB does not require a relational-style schema declaration first.
+
+#### Time to Live (TTL)
+
+I enabled **Time to Live** on the table with attribute **`expiresAt`** so expired items can be removed automatically by epoch time — useful if short links should expire after a lab/demo and the table should not grow forever.
+
+![TTL enabled with expiresAt attribute](/images/5-Workshop/5.2-Chuan-bi/ttl-settings.png)
 
 #### IAM role for Lambda
 
-The Lambda execution role has at least two permission layers:
+I created role **`url-shortener-lambda-role`** trusted by **AWS Lambda** as the backend execution role.
+
+![url-shortener-lambda-role created](/images/5-Workshop/5.2-Chuan-bi/iam-role-created.png)
+
+The role has at least two permission layers:
 
 1. `AWSLambdaBasicExecutionRole` (AWS managed) — write CloudWatch Logs.
-2. A DynamoDB policy (customer inline / managed) — only required actions on the table ARN.
+2. `url-shortener-dynamodb-policy` (customer inline) — only required actions on the `url-shortener-links` table ARN.
 
-![iam-role](/images/5-Workshop/5.2-Chuan-bi/iam-role.png)
+![url-shortener-lambda-role permissions](/images/5-Workshop/5.2-Chuan-bi/iam-role.png)
 
 DynamoDB policy content (replace `<ACCOUNT_ID>`):
 

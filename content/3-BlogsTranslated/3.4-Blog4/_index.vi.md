@@ -13,7 +13,7 @@ pre: " <b> 3.4. </b> "
 | Tiêu đề gốc | Implement resource counters with Amazon DynamoDB |
 | Nguồn | [AWS Database Blog](https://aws.amazon.com/blogs/database/implement-resource-counters-with-amazon-dynamodb/) |
 | Chủ đề | Atomic counter, UpdateItem, ConditionExpression, độ chính xác khi đồng thời, retry |
-| Liên hệ workshop | Mục 5.3 / 5.5 — tăng `clickCount` khi redirect |
+| Liên hệ workshop | Mục 5.3 — tăng `clickCount` khi redirect |
 
 #### 2. Tóm tắt nội dung
 
