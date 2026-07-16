@@ -1,4 +1,4 @@
----
+﻿---
 title: "Tự đánh giá"
 date: 2024-01-01
 weight: 6
@@ -6,7 +6,7 @@ chapter: false
 pre: " <b> 6. </b> "
 ---
 
-Trong suốt thời gian thực tập tại **First Cloud Journey – AWS FCJ HCM** từ **20/04/2026** đến **26/07/2026**, tôi đã cố gắng hết sức để học hỏi và thực hành. Tuy nhiên, nhìn lại toàn bộ quá trình, tôi nhận thấy bản thân còn nhiều hạn chế về kiến thức và kỹ năng.
+Trong suốt thời gian thực tập tại **First Cloud Journey – AWS FCJ HCM** từ **20/04/2026** đến **31/07/2026**, tôi đã cố gắng hết sức để học hỏi và thực hành. Tuy nhiên, nhìn lại toàn bộ quá trình, tôi nhận thấy bản thân còn nhiều hạn chế về kiến thức và kỹ năng.
 
 Tôi tham gia chương trình **FCJ Cloud Intern**, lần lượt làm quen với các dịch vụ AWS cơ bản đến nâng cao. Vì nền tảng ban đầu còn yếu, tôi phải **tự học rất nhiều** ngoài giờ — đọc lab Cloud Journey, tài liệu AWS — nhưng vẫn thường xuyên gặp khó khăn khi debug và cần thêm thời gian để nắm vững từng khái niệm.
 

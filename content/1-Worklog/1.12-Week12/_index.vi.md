@@ -1,4 +1,4 @@
----
+﻿---
 title: "Worklog Tuần 12"
 date: 2024-01-01
 weight: 12
@@ -6,7 +6,7 @@ chapter: false
 pre: " <b> 1.12. </b> "
 ---
 
-**Thời gian:** 06/07/2026 – 26/07/2026
+**Thời gian:** 06/07/2026 – 31/07/2026
 
 ### Mục tiêu tuần 12:
 

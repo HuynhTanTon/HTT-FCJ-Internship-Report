@@ -1,4 +1,4 @@
----
+﻿---
 title: "Self-Assessment"
 date: 2024-01-01
 weight: 6
@@ -6,7 +6,7 @@ chapter: false
 pre: " <b> 6. </b> "
 ---
 
-During my internship at **First Cloud Journey – AWS FCJ HCM** from **20/04/2026** to **26/07/2026**, I tried my best to learn and practice. Looking back, however, I still see many gaps in my knowledge and skills.
+During my internship at **First Cloud Journey – AWS FCJ HCM** from **20/04/2026** to **31/07/2026**, I tried my best to learn and practice. Looking back, however, I still see many gaps in my knowledge and skills.
 
 I joined the **FCJ Cloud Intern** program and worked through basic-to-advanced AWS services. Because my starting point was weak, I had to **self-study a lot** outside class hours — reading Cloud Journey labs and AWS docs — but I still struggled with debugging and often needed extra time to fully understand each concept.
 

@@ -1,4 +1,4 @@
----
+﻿---
 title: "Week 12 Worklog"
 date: 2024-01-01
 weight: 12
@@ -6,7 +6,7 @@ chapter: false
 pre: " <b> 1.12. </b> "
 ---
 
-**Period:** 06/07/2026 – 26/07/2026
+**Period:** 06/07/2026 – 31/07/2026
 
 ### Week 12 Objectives:
 

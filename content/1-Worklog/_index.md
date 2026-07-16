@@ -1,4 +1,4 @@
----
+﻿---
 title: "Worklog"
 date: 2024-01-01
 weight: 1
@@ -9,7 +9,7 @@ pre: " <b> 1. </b> "
 **On this page**, I document my weekly worklog throughout the FCJ Cloud Internship program at First Cloud Journey – AWS FCJ HCM.
 
 - **Intern:** Huynh Tan Ton (MSSV: 2280603319)
-- **Duration:** 12 weeks (20/04/2026 – 26/07/2026)
+- **Duration:** 12 weeks (20/04/2026 – 31/07/2026)
 - **Format:** Each week includes objectives, hands-on labs, achievements, challenges, and next-week plan
 
 **Week 1:** [Getting started with AWS Cloud & account setup](1.1-week1/)
