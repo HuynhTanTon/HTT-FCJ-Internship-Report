@@ -14,6 +14,10 @@ Kiến trúc chọn **Amazon S3** (Static Website Hosting) + **AWS Lambda Functi
 
 ![Kiến trúc Serverless URL Shortener](/images/5-Workshop/5.1-Tong-quan/architecture.png)
 
+#### Demo project
+
+**Video demo:** [URL Shortener Serverless — quy trình end-to-end](https://drive.google.com/file/d/1az6EVbShi64-Lg72U0uZnOoewGKCVeXn/view?usp=drive_link)
+
 #### Bài toán và cách tiếp cận
 
 Ứng dụng cần ba thao tác chính:

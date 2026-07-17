@@ -4,17 +4,8 @@
     <br>
     <b>Last Updated</b><br>
     <i>
-        <span id="lastUpdated" style="color:orange;"></span>
+        <span id="lastUpdated" style="color:orange;">{{ now.Format "02/01/2006" }}</span>
     </i>
-
-    <script>
-        // Lấy ngày hiện tại
-        const today = new Date();
-        // Định dạng dd-mm-yyyy
-        const formattedDate = today.toLocaleDateString('en-GB');
-        // Gán vào thẻ span
-        document.getElementById('lastUpdated').textContent = formattedDate;
-    </script>
 </left>
 <left>
     <br>

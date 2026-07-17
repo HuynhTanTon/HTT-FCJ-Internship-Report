@@ -14,6 +14,10 @@ The architecture uses **Amazon S3** (Static Website Hosting) + **AWS Lambda Func
 
 ![Serverless URL Shortener architecture](/images/5-Workshop/5.1-Tong-quan/architecture.png)
 
+#### Project demo
+
+**Demo video:** [Serverless URL Shortener — end-to-end walkthrough](https://drive.google.com/file/d/1az6EVbShi64-Lg72U0uZnOoewGKCVeXn/view?usp=drive_link)
+
 #### Problem and approach
 
 The app needs three core operations:
