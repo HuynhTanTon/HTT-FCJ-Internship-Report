@@ -1,6 +1,6 @@
 ---
 title: "Tự động hóa bôi sáng phụ đề video đồng bộ với giọng đọc bằng Amazon Transcribe"
-date: 2026-07-21
+date: 2026-07-20
 weight: 2
 chapter: false
 pre: " <b> 3.2. </b> "

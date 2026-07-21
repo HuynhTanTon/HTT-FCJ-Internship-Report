@@ -1,6 +1,6 @@
 ---
 title: "Realtime video progress syncing with AWS AppSync"
-date: 2026-07-21
+date: 2026-07-20
 weight: 3
 chapter: false
 pre: " <b> 3.3. </b> "

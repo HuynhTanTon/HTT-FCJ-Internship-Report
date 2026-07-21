@@ -1,6 +1,6 @@
 ---
 title: "Auto-highlight video subtitles synced with speech using Amazon Transcribe"
-date: 2026-07-21
+date: 2026-07-20
 weight: 2
 chapter: false
 pre: " <b> 3.2. </b> "
